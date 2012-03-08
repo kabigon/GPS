@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml">
+ <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+ <title></title>
+  <style type="text/css"> 
+ html{ padding:0px; margin:0px; } div#map_canvas{ margin:auto; width:600px; height:550px; overflow:hidden; } div#route{ width: 250px; height:380px; border:1px solid black; position:relative; float:left; font-size:12px; background-color:#F4F4F4;	 overflow:auto; display:none; } 
+ </style>
+
+</head> 
+
+<body onLoad="initialize()" onUnload="GUnload()"> <div id="map_canvas"> </div> 
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAwCJvXcuK-yhXg5-rmW_WSRSjPdg9q1PN1dBkFmcXVY9-C4qgKhRtq_Zn49VlscMWhoBzIqVGJRbTVA" type="text/javascript"></script>
+<script type="text/javascript"> 
+var directions; // สร้างตัวแปรสำหรับกำหนดเส้นทาง
+function initialize() { if (GBrowserIsCompatible()) { var map = new GMap2(document.getElementById("map_canvas")); var center = new GLatLng(13.77436,100.53458); // การกำหนดจุดเริ่มต้น 
+map.setCenter(center, 13); // เลข 13 คือค่า zoom สามารถปรับตามต้องการ 
+map.setUIToDefault(); var marker = new GMarker(center, {draggable: false}); // สร้างตัว mark เริ่มต้น 
+map.addOverlay(marker); var markerGoTo = new GMarker(center, {draggable: true}); // สร้างตัว mark อีกอัน 
+map.addOverlay(markerGoTo); directions = new GDirections(map);	 var directOpt= { "preserveViewport": true, "getSteps": true ,"getPolyline":true};	// กำหนดรูปแบบของส้นทาง 
+GEvent.addListener(markerGoTo, "dragend", function() { var point = markerGoTo.getPoint(); // หาตำแหน่างเมื่อหยุดการลากตัว mark 
+directions.load("from: "+point+" to:13.77436,100.53458 ",directOpt); // สร้างเส้นทาง }); 
+GEvent.addListener(directions, "load", function() { var drivingDistanceKilometers = directions.getDistance().meters / 1000;	 // หาระยะทางเป็น กิโลเมตร 
+$("#distanceDrive").val(drivingDistanceKilometers); // นำค่าที่ได้ไปใส่ใน textbox });	 } } </script> <script type="text/javascript" src="../jquery-1.4.1.min.js"></script>
+<script type="text/javascript"> 
+$(function(){ initialize(); $(document.body).unload(function(){ GUnload(); }); $("#Reset").click(function(){ directions.clear(); // ลบเส้นทางจากแผนที่ });	 }); </script> <div id="showDD" style="margin:auto;padding-top:5px;width:600px;"> <form id="form_get_detailMap" name="form_get_detailMap" method="post" action=""> ระยะทาง <input name="distanceDrive" type="text" id="distanceDrive" value="0" /> กม. <input type="submit" name="button" id="button" value="บันทึก" /> <input type="button" name="Reset" id="Reset" value="ยกเลิก เพื่อกำหนดจุดใหม่" /> </form> </div> </body> </html>
