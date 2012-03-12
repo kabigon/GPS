@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -129,7 +128,7 @@
 		
                 <!--"<img src='bus-driver[1].gif' width='100px' height='100px' ><span class='style2'>Driver</span>" +"<center><table width='200' border='0' bordercolor='#000000' width='50px'>"-->
 <?php
-$cn = @mysql_connect("localhost:3307", "root", "adminadmin");
+$cn = @mysql_connect("localhost", "root", "adminadmin");
 if (!$cn) {
     echo "fail<br>";
     exit;
@@ -139,7 +138,7 @@ $sql = "SELECT * FROM gps.driver";
 $result = mysql_query($sql, $cn);
 
 while ($row = mysql_fetch_array($result)) {
-    ?>
+    ?>  
                     +"<table width='499' height='171' border='0'>"
                     +"<tr><th width='154' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></th>"
                     + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
@@ -175,25 +174,23 @@ while ($row = mysql_fetch_array($result)) {
         xmlhttp.open("GET","profile.php?id="+str,true);
         xmlhttp.send();
     }
+	
     function trip_des(){
-        document.getElementById("map").innerHTML=
+        document.getElementById("map").innerHTML=""
 	
 <?php
-$cn = @mysql_connect("localhost", "root", "adminadmin");
-if (!$cn) {
-    echo "fail<br>";
-    exit;
-}
-mysql_select_db("gps", $cn);
-$sql = "SELECT * FROM gps.trip order by trip_id desc ";
-$result = mysql_query($sql, $cn);
+//$cn = @mysql_connect("localhost", "root", "adminadmin");
 
-while ($row = mysql_fetch_array($result)) {
-    ?> 
-            "<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php echo $row["trip_name"]; ?> </div></th></tr>"
-                + "<tr><th width='140' rowspan='2' scope='row'><img src='<?php $carid = $row["car_id"]; ?>' width='100' height='100' border='1' /></th></tr></table>"
+//mysql_select_db("gps", $cn);
+//$sql = "SELECT * FROM gps.trip order by trip_id desc ";
+//$result = mysql_query($sql, $cn);
+
+//while ($row = mysql_fetch_array($result)) {
+    ?>
+            <!--"<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php //echo $row["trip_name"]; ?> </div></th></tr>"-->
+			<!--+ "<tr><th width='140' rowspan='2' scope='row'><img src='<?php //$carid = $row["car_id"]; ?>' width='100' height='100' border='1' /></th></tr></table>"-->
                 	
-<?php } mysql_close($cn); ?>
+<?php //} mysql_close($cn); ?>
         ;
     }
 
@@ -690,7 +687,7 @@ while ($row = mysql_fetch_array($result)) {
                                                 </tr>
 
                                                 <?php
-                                                $cn = @mysql_connect("localhost:3307", "root", "adminadmin");
+                                                $cn = @mysql_connect("localhost", "root", "adminadmin");
                                                 if (!$cn) {
                                                     echo "fail<br>";
                                                     exit;
@@ -811,6 +808,7 @@ while ($row = mysql_fetch_array($result)) {
                 <br /><br />	
 
             </div>
+			
         </body>
 
 
