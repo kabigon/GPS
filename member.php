@@ -629,8 +629,8 @@ while ($row = mysql_fetch_array($result)) {
 
                 </div>
                 <div class="style4" id="nevigator">
-					<?php if($_SESSION["rank"]=='admin'){ ?>
-                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'><a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php' ><img src='logout.png'></a></span>"; ?>
+					<?php if($_SESSION["rank"]=='member'){ ?>
+                    <span class="style1"><a href="member.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'><a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
 
                     <div id="login">
                         <span class="style1"> </span>

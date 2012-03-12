@@ -1,19 +1,11 @@
-<? session_start() ; ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<META HTTP-EQUIV='Refresh' CONTENT='0.1; URL=mail.php'> 
-<title>Untitled Document</title>
-</head>
+<?php session_start() ; 
 
-<body>
+ob_start();?>
 
-<?
+
+<?php
 session_destroy();
-echo "| <a href='#' class='link' onclick='login()'> ล็อคอิน </a>";
+	echo header("location:home2.php");
 
 
 ?>
-</body>
-</html>
