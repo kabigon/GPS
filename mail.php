@@ -54,30 +54,30 @@
 	
                 if (GBrowserIsCompatible()) {
 
-                    // กำหนด DIV tag สำหรับ Map โดยเข้าถึงแบบ DOM
+                    // �?ำห�?ด DIV tag สำหรั�? Map �?ดยเ�?�?าถึ�?�?�?�? DOM
 
                     var map = new GMap2(document.getElementById("map"));
 
-                    // Add Map Control และ Map Type
+                    // Add Map Control �?ละ Map Type
 
                     map.addControl(new GSmallMapControl());
 
                     map.addControl(new GMapTypeControl());
 
-                    // กำหนด ค่าพิกัดของตำแหน่งเริ่มต้นบนแผนที่ 
+                    // �?ำห�?ด �?�?า�?ิ�?ัด�?อ�?ตำ�?ห�?�?�?เริ�?มต�?�?�?�?�?�?�?ที�? 
                     var point = new GPoint(13.7312933, 100.7811);
                     map.setCenter(new GLatLng(13.7312933, 100.7811), 14);
 		
 		
                     var marker = new GMarker(point,icongreen);
                     map.addOverlay(marker);
-                    //เมื่อเลื่อนแมฟ จะแสดง long lat ใต้ภาพ
+                    //เมื�?อเลื�?อ�?�?ม�? �?ะ�?สด�? long lat �?ต�?ภา�?
                     /*GEvent.addListener(map, "moveend", function() {
                   var center = map.getCenter();
                   document.getElementById("message").innerHTML = center.toString();
                 });*/
 		
-                    //click แล้วแสดงที่ mark ไว้
+                    //click �?ล�?ว�?สด�?ที�? mark �?ว�?
 	
 	
                     /*GEvent.addListener(map,"click", function(overlay,latlng) {     
@@ -89,7 +89,7 @@
                                                 lat = lat.toFixed(6);
                                                 lng = lng.toFixed(6);
                                         }
-                    var myHtml = "Latitude : " +lat + "Longtitude : " + lng + "<br>"+ "ต้องการจุดหมายที่นี่ คลิ๊ก :<br> <input type='button' onClick='javascript:Addpoint("+lat+","+lng+");' value='ทำการบันทึก'>";
+                    var myHtml = "Latitude : " +lat + "Longtitude : " + lng + "<br>"+ "ต�?อ�?�?าร�?ุดหมายที�?�?ี�? �?ลิ�?�? :<br> <input type='button' onClick='javascript:Addpoint("+lat+","+lng+");' value='ทำ�?าร�?ั�?ทึ�?'>";
 
                     map.openInfoWindow(latlng, myHtml);
 			
@@ -102,7 +102,7 @@
             }
 	
             function Addpoint(lat,lon){
-                //ติดต่อ database
+                //ติดต�?อ database
                 var map = new GMap2(document.getElementById("map"));
                 var point = new GLatLng(lat,lon);
 	
@@ -125,7 +125,7 @@
                 document.getElementById('showdetail').style.display = 'none';
                 document.getElementById("mail").style.display="inline";
                 document.getElementById("mail").innerHTML=
-                    "<p align='left'> <span class='style14'>ข้อมูลคนขับรถ</span> </p>"
+                    "<p align='left'> <span class='style14'>�?�?อมูล�?�?�?ั�?รถ</span> </p>"
 		
                 <!--"<img src='bus-driver[1].gif' width='100px' height='100px' ><span class='style2'>Driver</span>" +"<center><table width='200' border='0' bordercolor='#000000' width='50px'>"-->
 <?php
@@ -139,7 +139,7 @@ $sql = "SELECT * FROM gps.driver";
 $result = mysql_query($sql, $cn);
 
 while ($row = mysql_fetch_array($result)) {
-    ?>
+    ?>  
                     +"<table width='499' height='171' border='0'>"
                     +"<tr><th width='154' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></th>"
                     + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
@@ -203,7 +203,7 @@ while ($row = mysql_fetch_array($result)) {
             <!--document.getElementById("tttt").innerHTML=-->
 	
        
-        "<p align='left'> <span class='style14'>ข้อมูลรถยนต์</span> </p>" 
+        "<p align='left'> <span class='style14'>�?�?อมูลรถย�?ต�?</span> </p>" 
 <?php
 $cn = @mysql_connect("localhost", "root", "adminadmin");
 if (!$cn) {
@@ -646,22 +646,22 @@ while ($row = mysql_fetch_array($result)) {
 
                             <table width="100%" height="504" border="0">
                                 <tr>
-                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;<img src="header_login_button.png" width="48" height="17" /></span></th>
+                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เ�?�?าสู�?ห�?�?าติดตามระ�?�? &nbsp;&nbsp;<img src="header_login_button.png" width="48" height="17" /></span></th>
                                 </tr>
                                 <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
+                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">�?ระวัติ�?�?�?ั�?</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
+                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">�?ระวัติรถย�?ต�?</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
+                                    <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เ�?ิ�?ม�?�?อมูล�?�?�?ั�?</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
+                                    <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เ�?ิ�?ม�?�?อมูลรถ</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
+                                    <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เ�?ิ�?ม�?ารเดิ�?ทา�?�?หม�?</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
                                 </tr>
 
                                 <tr>
