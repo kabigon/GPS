@@ -54,30 +54,30 @@
 	
                 if (GBrowserIsCompatible()) {
 
-                    // �?ำห�?ด DIV tag สำหรั�? Map �?ดยเ�?�?าถึ�?�?�?�? DOM
+                    // กำหนด DIV tag สำหรับ Map โดยเข้าถึงแบบ DOM
 
                     var map = new GMap2(document.getElementById("map"));
 
-                    // Add Map Control �?ละ Map Type
+                    // Add Map Control และ Map Type
 
                     map.addControl(new GSmallMapControl());
 
                     map.addControl(new GMapTypeControl());
 
-                    // �?ำห�?ด �?�?า�?ิ�?ัด�?อ�?ตำ�?ห�?�?�?เริ�?มต�?�?�?�?�?�?�?ที�? 
+                    // กำหนด ค่าพิกัดของตำแหน่งเริ่มต้นบนแผนที่ 
                     var point = new GPoint(13.7312933, 100.7811);
                     map.setCenter(new GLatLng(13.7312933, 100.7811), 14);
 		
 		
                     var marker = new GMarker(point,icongreen);
                     map.addOverlay(marker);
-                    //เมื�?อเลื�?อ�?�?ม�? �?ะ�?สด�? long lat �?ต�?ภา�?
+                    //เมื่อเลื่อนแมฟ จะแสดง long lat ใต้ภาพ
                     /*GEvent.addListener(map, "moveend", function() {
                   var center = map.getCenter();
                   document.getElementById("message").innerHTML = center.toString();
                 });*/
 		
-                    //click �?ล�?ว�?สด�?ที�? mark �?ว�?
+                    //click แล้วแสดงที่ mark ไว้
 	
 	
                     /*GEvent.addListener(map,"click", function(overlay,latlng) {     
@@ -89,7 +89,7 @@
                                                 lat = lat.toFixed(6);
                                                 lng = lng.toFixed(6);
                                         }
-                    var myHtml = "Latitude : " +lat + "Longtitude : " + lng + "<br>"+ "ต�?อ�?�?าร�?ุดหมายที�?�?ี�? �?ลิ�?�? :<br> <input type='button' onClick='javascript:Addpoint("+lat+","+lng+");' value='ทำ�?าร�?ั�?ทึ�?'>";
+                    var myHtml = "Latitude : " +lat + "Longtitude : " + lng + "<br>"+ "ต้องการจุดหมายที่นี่ คลิ๊ก :<br> <input type='button' onClick='javascript:Addpoint("+lat+","+lng+");' value='ทำการบันทึก'>";
 
                     map.openInfoWindow(latlng, myHtml);
 			
@@ -102,7 +102,7 @@
             }
 	
             function Addpoint(lat,lon){
-                //ติดต�?อ database
+                //ติดต่อ database
                 var map = new GMap2(document.getElementById("map"));
                 var point = new GLatLng(lat,lon);
 	
@@ -125,7 +125,7 @@
                 document.getElementById('showdetail').style.display = 'none';
                 document.getElementById("mail").style.display="inline";
                 document.getElementById("mail").innerHTML=
-                    "<p align='left'> <span class='style14'>�?�?อมูล�?�?�?ั�?รถ</span> </p>"
+                    "<p align='left'> <span class='style14'>ข้อมูลคนขับรถ</span> </p>"
 		
                 <!--"<img src='bus-driver[1].gif' width='100px' height='100px' ><span class='style2'>Driver</span>" +"<center><table width='200' border='0' bordercolor='#000000' width='50px'>"-->
 <?php
@@ -139,12 +139,13 @@ $sql = "SELECT * FROM gps.driver";
 $result = mysql_query($sql, $cn);
 
 while ($row = mysql_fetch_array($result)) {
-    ?>  
+    ?>
                     +"<table width='499' height='171' border='0'>"
-                    +"<tr><th width='154' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></th>"
+                    +"<tr><th width='160' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='150' border='1' /></th>"
                     + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
                     +"<p align='left'>Age : <?php echo $row['age']; ?></p>"
-                    +"<p align='left'>Piority : 100%  </p>"
+                    +"<p align='left'>Piority :  <?php echo $row["priority"]; ?>%  </p>"
+					+"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
                     +"<p align='right'><a href ='#' class = 'link2' onclick='profile_driver(<?php echo $row['user_id']; ?> )'>Read more.... </a></p></td></tr>"
                     +"<tr><th scope='row'>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"     			
                 			
@@ -203,7 +204,7 @@ while ($row = mysql_fetch_array($result)) {
             <!--document.getElementById("tttt").innerHTML=-->
 	
        
-        "<p align='left'> <span class='style14'>�?�?อมูลรถย�?ต�?</span> </p>" 
+        "<p align='left'> <span class='style14'>ข้อมูลรถยนต์</span> </p>" 
 <?php
 $cn = @mysql_connect("localhost", "root", "adminadmin");
 if (!$cn) {
@@ -217,10 +218,11 @@ $result = mysql_query($sql, $cn);
 while ($row = mysql_fetch_array($result)) {
     ?>
                     +"<table width='499' height='171' border='0'><tr>"
-                    +"<td width='154'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></td>"
+                    +"<td width='165'><img src='<?php echo $row['pic']; ?>' width='155' height='150' border='1' /></td>"
                     +"<td width='329'><p align='left'><b>Car ID :<?php echo $row['car_id']; ?> </b></p>"
-                    +"<p align='left'>Type : <?php echo $row['type']; ?></p><p align='left'>Piority : 100%  </p>"
-                    +"<p align='right'><a href ='#' class = 'link2' onclick='profile_car(<?php echo $row['car_id']; ?> )'>Read more.... </a></p></td></tr>"
+                    +"<p align='left'>Type : <?php echo $row['type']; ?></p><p align='left'>Priority : <?php echo $row["priority"]; ?>%  </p>"
+					+"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
+                    +"<p align='right'><a href ='#' class = 'link2' onclick=\"profile_car('<?php echo $row['car_id']; ?> ')\">Read more.... </a></p></td></tr>"
                     +"<tr><th>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"
                 			
                 			
@@ -254,7 +256,10 @@ while ($row = mysql_fetch_array($result)) {
 
 
     function edit(str){
-		
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
+        
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -267,7 +272,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","edit_car.php?id="+str,true);
@@ -275,6 +280,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editfile_finish(str){
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         var car_id = document.getElementById("car_id").value;
         var brand = document.getElementById("brand").value;
         var color = document.getElementById("color").value;
@@ -293,7 +301,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","chk_edit_car.php?car_id="+car_id+"&brand="+brand+"&color="+color+"&type="+type,true);
@@ -302,6 +310,9 @@ while ($row = mysql_fetch_array($result)) {
 		
 	
     function edit_driver(str){
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
 		
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -315,7 +326,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","edit_driver.php?id="+str,true);
@@ -323,6 +334,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editdriver_finish(str){
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         var name = document.getElementById("name").value;
         var sex = document.getElementById("sex").value;
         var age = document.getElementById("age").value;
@@ -340,7 +354,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","chk_edit_driver.php?name="+name+"&sex="+sex+"&age="+age+"&PID="+PID,true);
@@ -630,7 +644,7 @@ while ($row = mysql_fetch_array($result)) {
                 </div>
                 <div class="style4" id="nevigator">
 					<?php if($_SESSION["rank"]=='admin'){ ?>
-                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'><a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php' ><img src='logout.png'></a></span>"; ?>
+                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
 
                     <div id="login">
                         <span class="style1"> </span>
@@ -646,22 +660,22 @@ while ($row = mysql_fetch_array($result)) {
 
                             <table width="100%" height="504" border="0">
                                 <tr>
-                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เ�?�?าสู�?ห�?�?าติดตามระ�?�? &nbsp;&nbsp;<img src="header_login_button.png" width="48" height="17" /></span></th>
+                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
                                 </tr>
                                 <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">�?ระวัติ�?�?�?ั�?</a></span></div></th>
+                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">�?ระวัติรถย�?ต�?</a></span></div></th>
+                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เ�?ิ�?ม�?�?อมูล�?�?�?ั�?</a></span></div></th>
+                                    <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เ�?ิ�?ม�?�?อมูลรถ</a></span></div></th>
+                                    <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
                                 </tr>
                                 <tr>
-                                    <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เ�?ิ�?ม�?ารเดิ�?ทา�?�?หม�?</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
+                                    <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
                                 </tr>
 
                                 <tr>

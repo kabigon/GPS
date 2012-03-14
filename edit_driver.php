@@ -23,6 +23,7 @@ $id = $_GET["id"];
 		while($row = mysql_fetch_array($result)){
 			//echo "<form action='edit_car_finish.php'>";
 			$pic =$row["pic"];
+			echo "<center>";
 			echo "<img src='".$row["pic"]."' width='170px' height='200px'/><br><br>";
 			echo "<b>Name : </b> <input type='text' id='name'  value='" . $row["name"] . "'><br>";
 			echo "<b>Sex : </b> <input type='text' id='sex' value='" . $row["sex"] . "'><br>";
@@ -34,6 +35,7 @@ $id = $_GET["id"];
 			
 			echo "<input type='submit' value='Change Edit Car' onclick='editdriver_finish($id)' >";
 			//echo "</form>";
+			echo "</center>";
 		}
 
 

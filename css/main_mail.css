@@ -63,9 +63,15 @@
 				padding-right:20px;
 				padding-top:20px;
 				
+        		/*background: url(../bg-blue_575px.gif);*/
+				
 			}
 			.welcome{
 				color:#FF9900;
+				
+			}
+			.cursor{
+				cursor:crosshair;
 			}
 
 
@@ -119,12 +125,12 @@
 			
 			.link3:link{
 
-                color:#CCCCCC;
+                color:#EBEBEB;
                 text-decoration:none;
                 font-family:Verdana, Arial, Helvetica, sans-serif;
             }
             .link3:visited{
-                color:#2F4F4F;
+                color:#EBEBEB;
                 text-decoration:none;
             }
             .link3:active{
@@ -160,3 +166,7 @@
                 color: #CC9900;
                 font-size: 28px;
             }
+			.style15{
+				color: #CC9900;
+				
+			}

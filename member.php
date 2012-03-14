@@ -135,13 +135,13 @@ if (!$cn) {
     exit;
 }
 mysql_select_db("gps", $cn);
-$sql = "SELECT * FROM gps.driver";
+$sql = "SELECT * FROM gps.driver where created_by='".$_SESSION["user"]."'";
 $result = mysql_query($sql, $cn);
 
 while ($row = mysql_fetch_array($result)) {
     ?>
                     +"<table width='499' height='171' border='0'>"
-                    +"<tr><th width='154' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></th>"
+                    +"<tr><th width='160' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='150' border='1' /></th>"
                     + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
                     +"<p align='left'>Age : <?php echo $row['age']; ?></p>"
                     +"<p align='left'>Piority : 100%  </p>"
@@ -211,16 +211,16 @@ if (!$cn) {
     exit;
 }
 mysql_select_db("gps", $cn);
-$sql = "SELECT * FROM gps.car";
+$sql = "SELECT * FROM gps.car where created_by='".$_SESSION["user"]."'";
 $result = mysql_query($sql, $cn);
 
 while ($row = mysql_fetch_array($result)) {
     ?>
                     +"<table width='499' height='171' border='0'><tr>"
-                    +"<td width='154'><img src='<?php echo $row['pic']; ?>' width='142' height='136' border='1' /></td>"
+                    +"<td width='165'><img src='<?php echo $row['pic']; ?>' width='155' height='150' border='1' /></td>"
                     +"<td width='329'><p align='left'><b>Car ID :<?php echo $row['car_id']; ?> </b></p>"
                     +"<p align='left'>Type : <?php echo $row['type']; ?></p><p align='left'>Piority : 100%  </p>"
-                    +"<p align='right'><a href ='#' class = 'link2' onclick='profile_car(<?php echo $row['car_id']; ?> )'>Read more.... </a></p></td></tr>"
+                    +"<p align='right'><a href ='#' class = 'link2' onclick=\"profile_car('<?php echo  $row['car_id'] ;?>')\">Read more.... </a></p></td></tr>"
                     +"<tr><th>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"
                 			
                 			
@@ -254,7 +254,9 @@ while ($row = mysql_fetch_array($result)) {
 
 
     function edit(str){
-		
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -267,7 +269,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","edit_car.php?id="+str,true);
@@ -275,6 +277,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editfile_finish(str){
+	document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         var car_id = document.getElementById("car_id").value;
         var brand = document.getElementById("brand").value;
         var color = document.getElementById("color").value;
@@ -293,7 +298,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","chk_edit_car.php?car_id="+car_id+"&brand="+brand+"&color="+color+"&type="+type,true);
@@ -302,7 +307,9 @@ while ($row = mysql_fetch_array($result)) {
 		
 	
     function edit_driver(str){
-		
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -315,7 +322,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","edit_driver.php?id="+str,true);
@@ -323,6 +330,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editdriver_finish(str){
+	document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         var name = document.getElementById("name").value;
         var sex = document.getElementById("sex").value;
         var age = document.getElementById("age").value;
@@ -340,7 +350,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","chk_edit_driver.php?name="+name+"&sex="+sex+"&age="+age+"&PID="+PID,true);
@@ -394,7 +404,9 @@ while ($row = mysql_fetch_array($result)) {
 	
 	
     function delete_driver(str){
-		
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -407,7 +419,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","delete_driver.php?id="+str,true);
@@ -415,7 +427,9 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function delete_car(str){
-		
+		document.getElementById('map').style.display = 'none';
+        document.getElementById('showdetail').style.display = 'none';
+        document.getElementById("mail").style.display="inline";
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp=new XMLHttpRequest();
@@ -428,7 +442,7 @@ while ($row = mysql_fetch_array($result)) {
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("map").innerHTML=xmlhttp.responseText;
+                document.getElementById("mail").innerHTML=xmlhttp.responseText;
                }
         }
         xmlhttp.open("GET","delete_car.php?id="+str,true);
@@ -630,7 +644,7 @@ while ($row = mysql_fetch_array($result)) {
                 </div>
                 <div class="style4" id="nevigator">
 					<?php if($_SESSION["rank"]=='member'){ ?>
-                    <span class="style1"><a href="member.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'><a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
+                    <span class="style1"><a href="member.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
 
                     <div id="login">
                         <span class="style1"> </span>
@@ -646,7 +660,7 @@ while ($row = mysql_fetch_array($result)) {
 
                             <table width="100%" height="504" border="0">
                                 <tr>
-                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;<img src="header_login_button.png" width="48" height="17" /></span></th>
+                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
                                 </tr>
                                 <tr>
                                     <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>

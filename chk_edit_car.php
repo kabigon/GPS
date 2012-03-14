@@ -3,13 +3,23 @@
 <head>
 <meta http-equiv="refresh" content="0;url=http://www.google.com/"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT"> 
+var StayAlive = 3; // เวลาเป็นวินาทีที่ต้องการให้ WIndows เปิดออก 
+function KillMe(){ 
+alert("tesT");
+//setTimeout("self.close()",StayAlive * 500); 
+window.parent.opener.document.location.href='member.php';
+} 
+</SCRIPT>
 
 <title>Untitled Document</title>
+
+
 </head>
 
-<body>
+<body >
 
-<?
+<?php
 	$car_id = $_GET["car_id"] ;
 	$brand =  $_GET["brand"];
 	$color =  $_GET["color"];
@@ -26,8 +36,11 @@
 	$result = mysql_query($sql,$cn);
 
 	if($result){
-		echo " <h1> Edit Successfull </h1>";
-		echo "<img src='loading.gif'/>";
+		echo " <center><h1> Edit Successfull </h1>";
+		echo "<img src='loading.gif'/></center>";
+		echo"<script language = 'javascript'>";
+           echo"KillMe()";
+           echo"</script>";
 	}
 ?>
 </body>

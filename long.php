@@ -18,12 +18,12 @@
 		$cn = @mysql_connect("127.0.0.1","GPS","cTTKBA0p");
 		
 		if(!$cn){
-			echo "fail<br>";
+			echo "faildd<br>";
 			exit;
 		}
 		else{
 		mysql_select_db("GPS",$cn);
-		$sql = "INSERT INTO GPS.location VALUES(null,'{$trip_id}' ,'{$long}','{$lat}','{$time}','{$speed}')";
+		$sql = "INSERT INTO GPS.location VALUES(null,'{$long}','{$lat}','{$time}','{$speed}',2,3)";
 		$result = mysql_query($sql,$cn);
 		if($result){
 			echo "Daileawja";

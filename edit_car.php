@@ -17,11 +17,12 @@ $id = $_GET["id"];
 			exit;
 		}
 		mysql_select_db("gps",$cn);
-		$sql = "SELECT * FROM gps.car where car_id =". $id;
+		$sql = "SELECT * FROM gps.car where car_id ='". $id."'";
 		$result = mysql_query($sql,$cn);
 		
 		while($row = mysql_fetch_array($result)){
 			//echo "<form action='edit_car_finish.php'>";
+			echo "<center>";
 			echo "<img src='".$row["pic"]."' width='300px' height='200px'/><br><br>";
 			echo "<b>Car License : </b> <input type='text' id='car_id' disabled='disabled' value='" . $row["car_id"] . "'><br>";
 			echo "<b>Brand : </b> <input type='text' id='brand' value='" . $row["brand"] . "'><br>";
@@ -31,8 +32,9 @@ $id = $_GET["id"];
 			echo "<b>Priority : </b> " . $row["priority"] . "%<br>";
 			
 			
-			echo "<input type='submit' value='Change Edit Car' onclick='editfile_finish($id)' >";
+			echo "<input type='submit' value='Change Edit Car' onclick=\"editfile_finish('$id')\" >";
 			//echo "</form>";
+			echo "</center>";
 		}
 
 

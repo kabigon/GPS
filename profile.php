@@ -1,4 +1,4 @@
-
+<? session_start() ; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,7 +11,7 @@
 	$id = $_GET["id"];
 	
 		echo "<center><h1>Driver PROFILE</h1></center>";
-		$cn = @mysql_connect("localhost:3307","root","adminadmin");
+		$cn = @mysql_connect("localhost","root","adminadmin");
 		if(!$cn){
 			echo "fail<br>";
 			exit;
@@ -29,7 +29,14 @@
 			echo "<b>Personal ID : </b>" . $row["PID"] . "<br>";
 			echo "<b>Priority : </b>" . $row["priority"] . "%<br>";
 			echo "</center>";
-	}
+		}
+		//if($_SESSION["rank"]=="admin"){
+			echo "<center>";
+			echo "<input type='submit' value='Edit User' onclick='edit_driver($id)' >";
+			echo "<input type ='submit' value='DELETE User' onclick='delete_driver($id)'>";
+			echo "</center>";
+			//}
+
 	
 		
 			

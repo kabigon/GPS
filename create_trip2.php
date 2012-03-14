@@ -72,6 +72,7 @@
                     map.enableScrollWheelZoom();
                     geocoder = new GClientGeocoder();
                     GEvent.addListener(map, "click", clicked);
+					
                 }
             }
             function load2() {

@@ -15,7 +15,14 @@ body{background-image:url(Img/bg2.jpg);color:#FFFFFF}
 CAR ID :<input type="text" name="car_id" /><br />
 Brand &nbsp;&nbsp;&nbsp;:<input type="text" name = "brand" /><br />
 Color :<input type="text" name = "color" /> <br />
-type :<input type="text" name ="type"  /><br />
+type :<select name="type">
+<option value=""><-- Please Select Item --></option>
+<option value="Motocycle">Motocycle</option>
+<option value="Van">Van</option>
+<option value="Pick-up Truck">Pick-up Truck</option>
+<option value="Truck">Truck</option>
+<option value="Other">Other</option>
+</select><br />
 <input type="hidden" name ="MAX_FILE_SIZE" value="100000">Picture :<input type="file" name="userfile" id="file"> <br>
 <input type="submit" name="submit" value="Create Car">
 </form>

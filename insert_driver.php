@@ -1,3 +1,4 @@
+<?php session_start() ; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,14 +12,19 @@ body{background-image:url(Img/bg2.jpg);color:#FFFFFF}
 var StayAlive = 3; // เวลาเป็นวินาทีที่ต้องการให้ WIndows เปิดออก 
 function KillMe(){ 
 setTimeout("self.close()",StayAlive * 1000); 
+window.parent.opener.document.location.href='member.php';
 } 
+
+function KillMe2(){ 
+setTimeout("self.close()",StayAlive * 1000); 
 window.parent.opener.document.location.href='mail.php';
+} 
 </SCRIPT> 
 </head>
 
 <body onload="KillMe();self.focus()";> 
 <?php
-$dest ="C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\GPS/".$_FILES['userfile']['name'];
+$dest ="C:\AppServ\www\GPS/".$_FILES['userfile']['name'];
 	if(move_uploaded_file($_FILES['userfile']['tmp_name'],$dest)){
 	//echo "finish move file <br>";
 	define("MAX_SHOW_SIZE",500000);
@@ -41,15 +47,28 @@ $sex=$_POST["sex"];
 $age=$_POST["age"];
 $PID=$_POST["PID"];
 $pic =$_FILES['userfile']['name'];
+$userja = $_SESSION["user"];
 
-$sql = "INSERT INTO gps.driver VALUES(null , '{$name}', '{$sex}','{$age}','{$PID}',100,'{$pic}')";
+
+$sql = "INSERT INTO gps.driver VALUES(null , '{$name}', '{$sex}','{$age}','{$PID}',100,'{$pic}',
+'{$userja}')";
 $result = mysql_query($sql,$cn);
 
 if($result){
 	echo "<img src=" .$_FILES['userfile']['name'] ." width='150px' height='200px'>" ."<br>";
 	echo "Add Successful"."<br>";
 	echo "<img src='loading.gif'/><br>";
-	echo( "<a href=\"#\" onclick=\"window.close(); return false\">CLOSE WINDOW</a>"); ;
+	//echo( "<a href=\"#\" onclick=\"window.close(); return false\">CLOSE WINDOW</a>"); ;
+	if ($_SESSION["rank"]=="member") {
+	echo "<SCRIPT LANGUAGE='javascript'><!--n";
+	echo "KillMe();n";
+	echo "// --></SCRIPT>n";
+	}
+	else if($_SESSION["rank"]=="admin"){
+	echo "<SCRIPT LANGUAGE='javascript'><!--n";
+	echo "KillMe2();n";
+	echo "// --></SCRIPT>n";
+	}
 
 }
 else{

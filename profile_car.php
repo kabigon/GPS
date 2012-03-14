@@ -1,4 +1,4 @@
-
+<? session_start() ; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,10 +31,17 @@
 			echo "<b>Color : </b>" . $row["color"] . "<br>";
 			echo "<b>Type : </b>" . $row["type"] . "<br>";
 			echo "<b>Priority : </b>" . $row["priority"] . "%<br>";
+			
 			echo "</center>";
 			
 			
 		}
+		//if($_SESSION["rank"]=="admin"){
+			echo "<center>";
+			echo "<input type='submit' value='Edit User' onclick=\"edit('$id')\" >";
+			echo "<input type ='submit' value='DELETE User' onclick='delete_car($id)'>";
+			echo "</center>";
+			//}
 		
 	?>
     

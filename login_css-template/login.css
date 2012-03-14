@@ -1,0 +1,252 @@
+
+/*****************************************************
+* Login
+*****************************************************/
+
+#bug_report_overlay form .submit {
+    bottom: -13px;
+    margin: 0pt;
+    padding: 0pt;
+    position: absolute;
+    right: 55px;
+}
+
+#container_front { width:575px!important; }
+
+#header_front {
+	background: url(image/header-575px.gif) no-repeat;
+	height: 115px;
+}
+
+#header_front h2 { background-image: url(image/h2-login.jpg); }
+
+div.content_front { background: url(image/bg-content_575px.png) repeat-y; }
+
+.login div.content_end_front[class] { background: url(image/bg-content_end_575px.png) no-repeat; }
+
+#container_front.login form {
+	padding: 0;
+	position: relative;
+}
+
+
+
+form .blue_box dl dd.password {
+	position: relative;
+	text-align: right;
+}
+	form dd.password span.input {
+		padding-right:10px;
+	}
+
+form input#login_password {
+    position: absolute;
+    width:200px;
+    top:5px;
+    left:5px;
+}
+
+form input#signup_button {
+	    width:auto;
+	    margin: 0;
+		right:15px;
+		bottom:25px;
+		position: absolute;
+		z-index:100;
+}
+
+form input.text {
+    width:343px;
+	font: bold 18px Helvetica, Arial, Verdana, sans-serif;
+	letter-spacing: -1px;
+	vertical-align: bottom;
+}
+
+
+
+
+
+
+#wrapper {
+	background: #bfd8e7 url(image/bg-front.gif) repeat-x; 
+	padding: 0 0 70px 0;
+}
+
+#container_front {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 950px;
+/*    background: #fff;*/
+}
+
+
+
+		#header_front h2 {
+	        display: block;
+	        height: 75px;
+	        text-indent: -7777px;
+	        background-repeat: no-repeat;
+	        background-position: center top;
+	    }
+
+        #header_front h3 {
+            color: #777;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 100%;
+			text-align: center;
+        }
+
+	div.content_front {
+       display: block;
+        position: relative;
+        padding: 5px 15px 0 15px;
+		background: url(image/bg-content_950px.png) repeat-y;
+		
+    }
+
+
+
+
+		
+	
+
+	div.content_end_front {
+        display: block;
+        height: 75px;
+        text-align: right;
+    }
+
+
+
+
+	div.blue_box {
+        padding: 20px 20px 0 20px;
+        text-align: left;
+        background: url(image/bg-blue_575px.gif) no-repeat;
+    }
+
+    div.blue_box_end {
+        height: 15px;
+        background: url(image/bg-blue_575px.gif) no-repeat left bottom;
+    }
+
+        form .blue_box dl {
+            padding: 5px 0 0 0;
+            line-height: 100%;
+            font-size: 11px;
+            color: #000;
+			border: none;
+			margin: 0;
+			background: none;
+        }
+
+            form .blue_box dl dt {
+                float: left;
+                width: 140px;
+                padding: 15px 0 0 0;
+				margin: 0;
+				text-align: left;
+				
+            }
+			form .blue_box dl dd {
+                 float: left;
+                 position: relative;
+                 width: 365px;
+                 padding: 0;
+				 margin: 0;
+             }
+
+	
+* {
+	margin:  0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+}
+body {
+	background: #262626;
+	font:       normal 100% "Lucida Grande", "Jamrul", Helvetica, Verdana, Arial, Tahoma, sans-serif;
+	color:      #555;
+	margin:     0;
+	padding:    0;
+	height: 100%;
+}
+
+img { border: 0; }
+
+
+
+
+a,
+a:focus,
+a:active,
+input,
+select { outline: none; }
+
+
+/*optgroup.emptyOpt {
+	border: none;
+	padding: 0;
+	margin: 0;
+	height: 10px;
+}
+*/
+
+
+
+
+.clear {
+	position: relative;
+	clear: both;
+}
+
+ 
+
+a,
+a:visited {
+	color: #0281ca;
+	text-decoration: none;
+	border-bottom: 1px solid #7db8d9;
+}
+a:hover {
+	color: #222;
+	text-decoration: none;
+	border-bottom: 0;
+}
+
+
+
+
+
+
+form {
+	padding: 25px 0;
+	font-size: 11px;
+}
+
+	form span.input,
+	form span.checkbox,
+	form span.textarea {
+		display: block;
+		-moz-border-radius: 5px;
+	    -webkit-border-radius: 5px;
+	    border-radius: 5px;
+		background: #d0e5f2;
+		padding: 5px;
+		margin: 0 0 15px 0;
+	}
+
+
+
+
+
+
+
+
+
+
+

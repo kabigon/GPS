@@ -104,7 +104,7 @@
 				<a href="#" onclick="authen()" class="link"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Authentication&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 				<?php } else{
 				
-					echo "<span class='welcome'><a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php' ><img src='logout.png'></a></span>";
+					echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php' ><img src='logout.png'></a></span>";
 				}?>
 				</div>
 				<center>

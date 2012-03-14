@@ -25,8 +25,8 @@
 	$result = mysql_query($sql,$cn);
 
 	if($result){
-		echo " <h1> Edit Successfull </h1>";
-		echo "<img src='loading2.gif'/>";
+		echo " <center><h1> Edit Successfull </h1>";
+		echo "<img src='loading2.gif'/></center>";
 	}
 ?>
 </body>
