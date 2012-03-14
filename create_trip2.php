@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+session_start();
+?>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,11 +10,11 @@
 
         <style type = "text/css">
             #header{color:#FFFFFF}
+            #content {background-image:url(Img/bg5.png); width:400pt ; height:500pt; margin-left: 10px}
             #showpiccar{}
             #center{float:left;width:30%;color:#FFFFFF}
             #map{float:left;width:43%}
             #rightmap{float:right;width:24%;font-size:5px}
-            body{background-image:url(Img/bg2.jpg);color:#000000}
             #searchenclosure{visibility:hidden;}
             #showshow{}
             #txtHint{margin-left:70px;background-color:#FFFFFF;width:215px}
@@ -66,11 +70,11 @@
                 document.getElementById("searchenclosure").style.visibility = 'visible';
                 if (GBrowserIsCompatible()) {
                     map = new GMap2(document.getElementById("map"));
-                    map.addControl(new GLargeMapControl()); 
+                    map.addControl(new GLargeMapControl3D()); 
                     map.addControl(new GMapTypeControl()); 
                     map.setCenter(new GLatLng(13.7312933, 100.7811), 14);
                     map.enableScrollWheelZoom();
-                    geocoder = new GClientGeocoder();
+                    geocoder = new GClientGeocoder(); //ตัวแปรเอาไว้ search 
                     GEvent.addListener(map, "click", clicked);
                 }
             }
@@ -116,11 +120,11 @@
                         else {
                             address = addresses.Placemark[1] ;
                             var tt = address.address;
-                            var myHtml = address.address + "<br><input type='button' onClick='javascript:Addpoint("+lat+","+lng+");' value='Save'>";
-                            alert(myHtml);
+                            var myHtml = address.address;
                             map.openInfoWindow(latlng, myHtml);
                             document.getElementById("location1").value=tt;
-			
+                            document.getElementById("start_long").value =lng;
+                            document.getElementById("start_lat").value =lat;
                         }
                     });
                     /*geocoder.getLocations(latlng, function(addresses) {
@@ -150,9 +154,11 @@
                         else {
                             address = addresses.Placemark[1] ;
                             var tt = address.address;
-                            var myHtml = address.address + "<br><input type='button' onClick='javascript:Addpoint2("+lat+","+lng+");' value='Save'>";
+                            var myHtml = address.address;
                             map.openInfoWindow(latlng, myHtml);
                             document.getElementById("location2").value = tt;
+                            document.getElementById("end_long").value =lng;
+                            document.getElementById("end_lat").value =lat;
                         }
                     });
                 }
@@ -306,94 +312,95 @@
 
     <body>
         <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&language=th'></script>
-        <div id="header"><h1>CREATE TRIP</h1><hr /></div>
+        <div id="content">
+            <div id="header"><h1>CREATE TRIP</h1><hr /></div>
 
-        <div id="center">
-            <form action="insert_trip.php">
-                TRIP NAME : <input type="text" name="trip_name"  /><br /><br /><br />
+            <div id="center">
+                <form action="insert_trip.php">
+                    TRIP NAME : <input type="text" name="trip_name"  /><br /><br /><br />
 
-                Start Point  <input type="text" name="location1" id="location1" onKeyUp ="showHint()"size="30" value="ใส่สถานที่ ถนน" onfocus="this.value=''"/><br /><div id="txtHint" ></div><br /> 
-                lattitude :<input type="text" name="start_lat" id="start_lat" /><br />
-                longtitude :<input type="text" name="start_long" id="start_long" />
-                <img src="simpleMap.png" width="30px" height="30px" id = "1" onclick="load()"  /><br /><br />
-                End Point <input type="text" name="location2" id="location2" size="30"/><br /><br /> lattitude :<input type="text" name="end_lat" id="end_lat"/><br />
-                longtitude :<input type="text" name="end_long" id="end_long" /><img src="simpleMap.png" width="30px" height="30px" id = "2" onclick="load2()"  /><br /><br />
-                Show Trip <img src="google_maps_icon.png" width="50px" height="50px" onclick="initialize()"/><br /><br />
+                    Start Point  <input type="text" name="location1" id="location1" onKeyUp ="showHint()"size="30" value="ใส่สถานที่ ถนน" onfocus="this.value=''"/><br /><div id="txtHint" ></div><br /> 
+                    lattitude :<input type="text" name="start_lat" id="start_lat" /><br />
+                    longtitude :<input type="text" name="start_long" id="start_long" />
+                    <img src="simpleMap.png" width="30px" height="30px" id = "1" onclick="load()"  /><br /><br />
+                    End Point <input type="text" name="location2" id="location2" size="30"/><br /><br /> lattitude :<input type="text" name="end_lat" id="end_lat"/><br />
+                    longtitude :<input type="text" name="end_long" id="end_long" /><img src="simpleMap.png" width="30px" height="30px" id = "2" onclick="load2()"  /><br /><br />
+                    Show Trip <img src="google_maps_icon.png" width="50px" height="50px" onclick="initialize()"/><br /><br />
 
-                CarID : <select name="car_id" id ="car_id" onchange="piccar()">
-                    <option value=""><-- Please Select Item --></option>
+                    CarID : <select name="car_id" id ="car_id" onchange="piccar()">
+                        <option value=""><-- Please Select Item --></option>
 
-                    <?php
-                    $cn = @mysql_connect("localhost", "root", "adminadmin");
-                    if (!$cn) {
-                        echo "fail<br>";
-                        exit;
-                    }
-                    mysql_select_db("gps", $cn);
-                    $sql = "SELECT * FROM gps.car";
-                    $result = mysql_query($sql, $cn);
-                    $i = 1;
-                    while ($row = mysql_fetch_array($result)) {
-                        if ($i == 20) {
-                            mysql_close($cn);
-                        } else {
-                            ?>
-                            <option value="<?php echo $row['pic'] ?>"> <?php echo $row['car_id'] ?> </option>
-                        <?php }
-                    } ?>
-
-
-
-                </select><br /><br />
-                Driver Name :<select name="user_id" id="user_id" onchange="picuser()">
-                    <option value=""><-- Please Select Item --></option>
-
-<?php
-$cn = @mysql_connect("localhost", "root", "adminadmin");
-if (!$cn) {
-    echo "fail<br>";
-    exit;
-}
-mysql_select_db("gps", $cn);
-$sql = "SELECT * FROM gps.driver";
-$result = mysql_query($sql, $cn);
-$i = 1;
-while ($row = mysql_fetch_array($result)) {
-    if ($i == 20) {
-        mysql_close($cn);
-    } else {
-        ?>
-                            <option value="<?php echo $row['pic'] ?>"> <?php echo $row['name'] ?> </option>
-                        <?php }
-                    } ?>
+                        <?php
+                        $cn = @mysql_connect("localhost", "root", "adminadmin");
+                        if (!$cn) {
+                            echo "fail<br>";
+                            exit;
+                        }
+                        mysql_select_db("gps", $cn);
+                        $sql = "SELECT * FROM gps.car";
+                        $result = mysql_query($sql, $cn);
+                        $i = 1;
+                        while ($row = mysql_fetch_array($result)) {
+                            if ($i == 20) {
+                                mysql_close($cn);
+                            } else {
+                                ?>
+                                <option value="<?php echo $row['pic'] ?>"> <?php echo $row['car_id'] ?> </option>
+                            <?php }
+                        } ?>
 
 
 
-                </select><br /><br />
-                <input type="submit" value="Create Trip" />
-            </form>
+                    </select><br /><br />
+                    Driver Name :<select name="user_id" id="user_id" onchange="picuser()">
+                        <option value=""><-- Please Select Item --></option>
+
+                        <?php
+                        $cn = @mysql_connect("localhost", "root", "adminadmin");
+                        if (!$cn) {
+                            echo "fail<br>";
+                            exit;
+                        }
+                        mysql_select_db("gps", $cn);
+                        $sql = "SELECT * FROM gps.driver";
+                        $result = mysql_query($sql, $cn);
+                        $i = 1;
+                        while ($row = mysql_fetch_array($result)) {
+                            if ($i == 20) {
+                                mysql_close($cn);
+                            } else {
+                                ?>
+                                <option value="<?php echo $row['pic'] ?>"> <?php echo $row['name'] ?> </option>
+                            <?php }
+                        } ?>
+
+
+
+                    </select><br /><br />
+                    <input type="submit" value="Create Trip" />
+                </form>
+            </div>
+            <div id="searchenclosure"> 
+                <form action="#" onsubmit="showAddress(this.address.value); return false " onreset="resetOverlay();"> 
+
+                    <p> 
+                        <input type="text" size="50" name="address" value="Enter your location here.." onfocus="this.value=''"/> 
+                        <input type="submit" value="Search"/> 
+                        <br/>
+                    </p>
+                </form>
+            </div>
+            <div id="map" style=" height: 300px" align="center">
+
+
+            </div>
+            <div id="showshow">
+
+            </div>
+            <!--<div id="rightmap" style="width: 50px; height: 50px">
+            
+            </div>-->	
+            <div id="route" style="width: 25%; height:480px; float:right; border: 1px solid black; overflow: auto; visibility: hidden;"></div>
         </div>
-        <div id="searchenclosure"> 
-            <form action="#" onsubmit="showAddress(this.address.value); return false" onreset="resetOverlay();"> 
-
-                <p> 
-                    <input type="text" size="50" name="address" value="Enter your location here.." onfocus="this.value=''"/> 
-                    <input type="submit" value="Search"/> 
-                    <br/>
-                </p>
-            </form>
-        </div>
-        <div id="map" style=" height: 300px" align="center">
-
-
-        </div>
-        <div id="showshow">
-
-        </div>
-        <!--<div id="rightmap" style="width: 50px; height: 50px">
-        
-        </div>-->	
-        <div id="route" style="width: 25%; height:480px; float:right; border: 1px solid black; overflow: auto;"></div>
-
     </body>
 </html>

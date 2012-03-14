@@ -15,7 +15,7 @@ session_start();
         <link rel="stylesheet" href="css/foundation.css">
             <link rel="stylesheet" href="css/app.css">
                 <style type = "text/css">
-                    #test {background-image:url(Img/bg5.png) ; width:305pt ; height:500pt}
+                    #test {background-image:url(Img/bg5.png); width:400pt ; height:500pt; margin-left: 10px}
                     #register {float:right}
                     #checkstatus {color:#FF0000}
                     #chkpass{color:red}
@@ -24,7 +24,48 @@ session_start();
 
 
                 </style>
+                 <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAwCJvXcuK-yhXg5-rmW_WSRSjPdg9q1PN1dBkFmcXVY9-C4qgKhRtq_Zn49VlscMWhoBzIqVGJRbTVA" type="text/javascript"></script>
                 <script  language="javascript">
+                    var map = null;
+                    var geocoder = null;
+ 
+                    function load() {
+                        document.getElementById("map_canvas").style.visibility = 'visible';
+                        if (GBrowserIsCompatible()) {
+                            map = new GMap2(document.getElementById("map_canvas"));
+                            map.addControl(new GLargeMapControl3D()); 
+                            map.addControl(new GMapTypeControl()); 
+                            map.setCenter(new GLatLng(13.7312933, 100.7811), 14);
+                            map.enableScrollWheelZoom();
+                            geocoder = new GClientGeocoder(); //ตัวแปรเอาไว้ search 
+                            GEvent.addListener(map, "click", clicked);
+                        }
+                    }
+                    function clicked(overlay, latlng) {
+                        if (latlng) {
+                            var matchll = /\(([-.\d]*), ([-.\d]*)/.exec( latlng );
+                            var lat = parseFloat( matchll[1] );
+                            var lng = parseFloat( matchll[2] );
+
+                            geocoder.getLocations(latlng, function(addresses) {
+                                if(addresses.Status.code != 200) {
+                                    alert("reverse geocoder failed to find an address for " + latlng.toUrlValue());
+                                }
+                                else {
+                                    address = addresses.Placemark[0] ;
+                                    var tt = address.address;
+                                    var myHtml = address.address;
+                                    map.openInfoWindow(latlng, myHtml);
+                                    document.getElementById("longitude").style.display="block";
+                                    document.getElementById("latitude").style.display="block";
+                                    document.getElementById("standardTexted").value=tt;
+                                    document.getElementById("long").value =lng;
+                                    document.getElementById("lat").value =lat;
+                                }
+                            });
+                           
+                        }
+                    }
                    
                     function chkpass(){
 
@@ -52,7 +93,7 @@ session_start();
 
                 </head>
 
-                <body>
+                <body onload="load()">
 
                     <div id="test">
                         <h3 style="color: #888">Register Form</h3>
@@ -71,14 +112,23 @@ session_start();
                             <input type="text" name="phone" class="input-text" id="phone"/>
                             <label for="company">Company name</label>
                             <input type="text" name="company" class="medium input-text"/>
-                            <label for="standardTexted">Address: </label>
-                            <textarea cols="15" rows="2" id="standardTexted" name="add"></textarea>
+                            <label for="standardTexted">Address </label>
+                            <small class="error" >Please choose location from the google map</small>
+                            <div id="map_canvas" style="height: 300px;width: 100%;">
+
+                            </div> 
+                            <textarea cols="15" rows="2" id="standardTexted" name="add" style="margin-top: 10px;"></textarea>
+                            <div class="row display">
+                                <div class="two columns" id="latitude" style="display: none;">Latitude: <input type="text" name="long" id="long" class="input-text" style=" width: 100px"/></div>
+                                <div class="two columns" id="longitude" style="display: none;">Longitude: <input type="text" name="lat"  id="lat" class="input-text" style=" width: 100px"/></div>
+                                <div class="six columns"></div>
+                            </div>
+
                             <label for="standardDropdown">Role :</label>
                             <select name="role" id="standardDropdown">
                                 <option value="admin">Admin</option>
                                 <option value="member">Member</option>
                             </select>
-
                             <input type="submit" value="register" class="nice radius small blue button" style="float: right"/>
                         </form>
 

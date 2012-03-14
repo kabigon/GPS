@@ -10,6 +10,8 @@ $rank = $_GET["role"];
 $company = $_GET["company"];
 $address = $_GET["add"];
 $phone = $_GET["phone"];
+$lat = $_GET["lat"];
+$long = $_GET["long"];
 
 
 echo $rank;
@@ -19,7 +21,7 @@ mysql_select_db("gps", $cn);
 $sqlcheck = "SELECT * from gps.user where username= '$username'";
 $result2 = mysql_query($sqlcheck, $cn);
 if (!mysql_fetch_array($result2)) {
-    $sql = "INSERT INTO gps.user VALUES (0,'$username' ,'$password','$email','$rank','$phone','$address','$company')";
+    $sql = "INSERT INTO gps.user VALUES (0,'$username' ,'$password','$email','$rank','$phone','$address','$company','$lat','$long')";
     $result = mysql_query($sql, $cn);
     if (!$result) {
         die('Error: ' . mysql_error());
