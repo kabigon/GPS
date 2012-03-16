@@ -3,7 +3,7 @@ session_start();
 $username = $_SESSION["user"];
 $start_lat = $_GET["start_lat"];
 $end_lng = $_GET["end_lng"];
-$cn = mysql_connect("localhost:3307","root","adminadmin");
+$cn = mysql_connect("localhost","root","adminadmin");
 if (!$cn) {
     echo "fail<br>";
     exit;
