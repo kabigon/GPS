@@ -1,4 +1,4 @@
-<?
+<?php
 // ใว้ข้างบนสุด ครับ
 ob_start();
 ?>
@@ -7,19 +7,17 @@ ob_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<META HTTP-EQUIV='Refresh' CONTENT='0.1; URL=mail.php'>
+
 <title>Untitled Document</title>
 
-<script language="javascript">
-window.parent.opener.document.location.href='mail.php';
-</script>
+
 
 
 </head>
 
 <body>
 
-<?
+<?php
 
 	$username= $_GET["username"];
 	$password = $_GET["password"];
@@ -57,7 +55,7 @@ window.parent.opener.document.location.href='mail.php';
 					echo "<td>".$row["company_name"]."</td></tr></table>";
 					echo "<a href='mail.php' class='link'><input type='submit' value='Go to Web'></a>";
 					echo "<input type='submit' value='Edit!' onclick='edit(".$row["id"].")'>";
-					echo "<meta http-equiv=\"refresh\" content=\"1; URL= home2.php\">";
+					//echo "<meta http-equiv=\"refresh\" content=\"1; URL= home2.php\">";
 					
 				//echo "<a class='link' >Hi : ".$username ."</a>";
 				//echo "<input type='submit' value='Logout' onclick='logout()' />";	
@@ -97,7 +95,7 @@ window.parent.opener.document.location.href='mail.php';
 				$_SESSION['rank'] = "user";
 				echo "Hi :".$username;
 				echo "<input type='submit' value='Logout' onclick='logout()' />";
-				echo "<meta http-equiv='refresh' content='2;URL=gps/mail.php#' />";
+				//echo "<meta http-equiv='refresh' content='2;URL=gps/mail.php#' />";
 				}
 			}
 			else{
