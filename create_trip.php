@@ -66,7 +66,7 @@
         map.addControl(new GMapTypeControl());//คือการเพิ่มเครื่องมือเรียกชนิดmapต่างๆของGoogle Map
 
     // กำหนด ค่าพิกัดของตำแหน่งเริ่มต้นบนแผนที่ 
-		var point = new GPoint(13.7312933, 100.7811);
+		var point = new GPoint(13.730433, 100.781279);
         map.setCenter(new GLatLng(13.7312933, 100.7811), 17);
 		
         

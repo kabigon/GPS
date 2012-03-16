@@ -498,6 +498,7 @@ while ($row = mysql_fetch_array($result)) {
                 directionsDisplay.setDirections(response);
             }
         });
+		
     }
 		
     function detail(user,car,id){

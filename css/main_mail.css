@@ -37,6 +37,7 @@
                 overflow:auto;
                 height:500px; 
             }
+			
             #trip{width:19%;overflow: auto;height:250px; }
             #notification{width:19%;overflow: auto;height:120px;color:#FF6600;background-color:#FFFFF6;text-align:left;border:groove;border-color:#FFFFFF;
             }
