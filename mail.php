@@ -1,4 +1,3 @@
-
 <?php session_start() ; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -499,6 +498,7 @@ while ($row = mysql_fetch_array($result)) {
                 directionsDisplay.setDirections(response);
             }
         });
+		
     }
 		
     function detail(user,car,id){
@@ -645,7 +645,7 @@ while ($row = mysql_fetch_array($result)) {
                 </div>
                 <div class="style4" id="nevigator">
 					<?php if($_SESSION["rank"]=='admin'){ ?>
-                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\GPS\logout.png' width='40px' height='20px'></a></span>"; ?>
+                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
 
                     <div id="login">
                         <span class="style1"> </span>

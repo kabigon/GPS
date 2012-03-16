@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 session_start();
 $cn = @mysql_connect("localhost:3307", "root", "adminadmin");
@@ -20,7 +21,7 @@ mysql_select_db("gps", $cn);
                 color:#FFFFFF}
         </style>
         <SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
-            var StayAlive = 3; // เวลาเป็นวินาทีที่ต้องการให้ WIndows เปิดออก 
+            var StayAlive = 3; // เวลาเป็นวินาทีที่ต้อง�?ารให้ WIndows เปิดออ�? 
 
             function KillMe() {
                 setTimeout("self.close()", StayAlive * 1000);
@@ -49,7 +50,7 @@ mysql_select_db("gps", $cn);
         $email = $_GET["des_email"];
 
 
-        //ดึงค่า user_id ที่แท้จริงจาก database เพิื่อนำมา Add ลง Table Trip
+        //ดึงค่า user_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
 
         $sql = "SELECT * FROM gps.driver where pic ='" . $user_id . "'";
         $result = mysql_query($sql, $cn);
@@ -63,7 +64,7 @@ mysql_select_db("gps", $cn);
             $i = $i + 1;
         }
 
-        //ดึงค่า car_id ที่แท้จริงจาก database เพิื่อนำมา Add ลง Table Trip
+        //ดึงค่า car_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
 
 
         $sql = "SELECT * FROM gps.car where pic ='" . $car_id . "'";
