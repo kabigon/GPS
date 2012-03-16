@@ -15,7 +15,7 @@ $long = $_GET["long"];
 
 
 echo $rank;
-$cn = @mysql_connect("localhost", "root", "adminadmin");
+$cn = @mysql_connect("localhost:3307", "root", "adminadmin");
 
 mysql_select_db("gps", $cn);
 $sqlcheck = "SELECT * from gps.user where username= '$username'";
