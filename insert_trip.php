@@ -46,6 +46,7 @@ mysql_select_db("gps", $cn);
         $authen = $_GET["authen_code"];
         $start_time = "22";
         $username = $_SESSION["user"];
+        $email = $_GET["des_email"];
 
 
         //ดึงค่า user_id ที่แท้จริงจาก database เพิื่อนำมา Add ลง Table Trip
@@ -89,6 +90,19 @@ mysql_select_db("gps", $cn);
             die('Error: ' . mysql_error());
         }
         echo "1 record added";
+        $strTo = "$email";
+        $strSubject = "TFL AuthenCode for $trip_name";
+        $strHeader = "From: jak_cholchalatan@hotmail.com";
+        $strMessage = "Your Authen Code is $authen";
+
+        $flgSend = @mail($strTo, $strSubject, $strMessage, $strHeader);  // @ = No Show Error //
+
+        if ($flgSend) {
+            echo "Email Sending.";
+        } else {
+            echo "Email Can Not Send.";
+        }
         ?>
+
     </body>
 </html>
