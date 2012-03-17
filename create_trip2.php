@@ -54,9 +54,8 @@ mysql_select_db("gps", $cn);
                     function picuser(){
                         //window.alert(document.getElementById("user_id").value);
                         document.getElementById("searchenclosure").style.visibility = 'hidden';
-		
                         var t=document.getElementById("user_id").value;
-		
+		        
 	
                         document.getElementById("map").innerHTML="<img src="+document.getElementById("user_id").value+ " width=300px height =300px/>" ;	
                         //document.getElementById("route").innerHTML = "ohh" ;
@@ -370,7 +369,7 @@ mysql_select_db("gps", $cn);
                                                 mysql_close($cn);
                                             } else {
                                                 ?>
-                                                <option value="<?php echo $row['car_id'] ?>"> <?php echo $row['car_id'] ?> </option>
+                                                <option value="<?php echo $row['pic'] ?>"> <?php echo $row['car_id'] ?> </option>
                                             <?php }
                                         } ?>
                                     </select>
@@ -389,10 +388,11 @@ mysql_select_db("gps", $cn);
                                                 mysql_close($cn);
                                             } else {
                                                 ?>
-                                                <option value="<?php echo $row['user_id'] ?>"> <?php echo $row['name'] ?> </option>
+                                                <option value="<?php echo $row['pic'] ?>"> <?php echo $row['name'] ?> </option>
                                             <?php }
                                         } ?>
                                     </select>
+                                    
                                     Destination Email
                                     <input type="text" name="des_email" value="Insert Email to send Authen code" class="input-text" onClick="this.value=''"/>
                                     <span>Start Point  <img src="simpleMap.png" width="30px" height="10px" id = "1" onclick="load()"  /></span>

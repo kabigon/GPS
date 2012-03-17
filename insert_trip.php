@@ -1,8 +1,10 @@
+<?php
+session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
-session_start();
-$cn = @mysql_connect("localhost:3307", "root", "adminadmin");
+
+$cn = @mysql_connect("localhost", "root", "adminadmin");
 if (!$cn) {
     echo "fail<br>";
     exit;
@@ -21,17 +23,20 @@ mysql_select_db("gps", $cn);
                 color:#FFFFFF}
         </style>
         <SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
-            var StayAlive = 3; // เวลาเป็นวินาทีที่ต้อง�?ารให้ WIndows เปิดออ�? 
+            var StayAlive = 3; // เวลาเป็นวินาทีที่ต้อง�?ารให้ WIndows เปิดออ�? 
 
-            function KillMe() {
-                setTimeout("self.close()", StayAlive * 1000);
-            }
-
-            window.parent.opener.document.location.href='mail.php';
+            function KillMe(){ 
+///setTimeout("self.close()",StayAlive * 1000); 
+window.parent.opener.document.location.href='member.php';
+} 
+function KillMe2(){ 
+//setTimeout("self.close()",StayAlive * 1000); 
+window.parent.opener.document.location.href='mail.php';
+} 
         </SCRIPT> 
     </head>
 
-    <body>
+    <body onload="KillMe();self.focus()";>
 
         <?php
         $trip_name = $_GET["trip_name"];
@@ -50,7 +55,7 @@ mysql_select_db("gps", $cn);
         $email = $_GET["des_email"];
 
 
-        //ดึงค่า user_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
+        //ดึงค่า user_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
 
         $sql = "SELECT * FROM gps.driver where pic ='" . $user_id . "'";
         $result = mysql_query($sql, $cn);
@@ -64,7 +69,7 @@ mysql_select_db("gps", $cn);
             $i = $i + 1;
         }
 
-        //ดึงค่า car_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
+        //ดึงค่า car_id ที่�?ท้จริงจา�? database เพิื่อนำมา Add ลง Table Trip
 
 
         $sql = "SELECT * FROM gps.car where pic ='" . $car_id . "'";
@@ -103,6 +108,16 @@ mysql_select_db("gps", $cn);
         } else {
             echo "Email Can Not Send.";
         }
+		if ($_SESSION["rank"]=="member") {
+	echo "<SCRIPT LANGUAGE='javascript'><!--n";
+	echo "KillMe();n";
+	echo "// --></SCRIPT>n";
+	}
+	else if($_SESSION["rank"]=="admin"){
+	echo "<SCRIPT LANGUAGE='javascript'><!--n";
+	echo "KillMe2();n";
+	echo "// --></SCRIPT>n";
+	}
         ?>
 
     </body>
