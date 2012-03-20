@@ -19,7 +19,8 @@
                         <h3 style="color: #888">Create Driver</h3>
                         <form action="insert_driver.php" method="post" enctype="multipart/form-data">
                             Name-Lastname  <input type="text" name="name" class="input-text"/>
-                            Sex  <select name="sex" id="nicedropdown">
+                            Sex  
+                            <select name="sex" id="nicedropdown">
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -27,7 +28,7 @@
                             Personal ID  <input type="text" name="PID" class="input-text"/>
                             <input type="hidden" name ="MAX_FILE_SIZE" value="100000"/>
                             Select Picture <input type="file" name="userfile" id="file"/>
-                            <input type="submit" name="submit" value="Create Driver" class="nice radius small blue button" style="float: right"/>
+                            <input type="submit" name="submit" value="Create Driver" class="nice radius small blue button" style="float: right;"/>
                         </form>
                     </div>
                 </body>
