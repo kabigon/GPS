@@ -22,42 +22,14 @@ $_SESSION['user'] = "";
 
         <script type="text/javascript">
             function login(){
-                
-                document.getElementById("loginbox").innerHTML="<h2 style= \"color: #888; font-family: THSarabunNew,Tahoma, sans-serif; \"> Login </h2> <br> <input type='text' id='username' name='username' class=\"input-text\" placeholder=\"Username\"/><input type='password' id='password' name='password' class=\"input-text\" placeholder=\"Password\" /><input type='submit' value='Login' onclick='login_process()' class=\"medium blue nice button radius\" />";
-            }
-            function login_process(){
-		
-                var username = document.getElementById("username").value;
-                var password = document.getElementById("password").value;
-                window.location="login_process.php?username="+username+"&password="+password;
+                document.getElementById("loginbox").style.display = "block";
+                document.getElementById("authenbox").style.display = "none";
             }
             
-            function divChange(){
-                var username = document.getElementById("username").value;
-                var password = document.getElementById("password").value;
-                document.getElementById('nevigator').style.display = 'none';
-                document.getElementById('nevigator2').style.display = 'block';
-                if (window.XMLHttpRequest)
-                {// code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp=new XMLHttpRequest();
-                }
-                else
-                {// code for IE6, IE5
-                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange=function()
-                {
-                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                    {
-                        document.getElementById("nevigator2").innerHTML=xmlHttp.responseText;
-                    }
-                }
-                xmlhttp.open("GET","divprocess.php?username="+username+"&password="+password,true);
-                xmlhttp.send();
-            }
 	
             function authen(){
-                document.getElementById("loginbox").innerHTML="<h2 style= \"color: #888\; font-family: THSarabunNew,Tahoma, sans-serif; \"> Authentication </h2><br/> <input type='password' id='code' class=\"input-text\" placeholder=\"Enter authen code here....\"/><input type='submit' value='Authen' onclick='authen_process()' class=\"medium blue nice button radius\"/>"
+                document.getElementById("loginbox").style.display = "none";
+                document.getElementById("authenbox").style.display = "block";
             }
             function authen_process(){
 	
@@ -139,20 +111,29 @@ $_SESSION['user'] = "";
 
             </div>
             <div class="style4" id="nevigator">
-                    <a href="#" onclick="login()" class="link"> Login 	</a>
-                    |<a href="#" onclick="authen()" class="link" style="margin-right: 20px">  Authentication </a>
-                    
+                <a href="#" onclick="login()" class="link"> Login 	</a>
+                |<a href="#" onclick="authen()" class="link" style="margin-right: 20px">  Authentication </a>
+
             </div>
             <div class="style4" id="nevigator2" style="display: none">
-                
-                
+
+
             </div>
             <center>
                 <br />
-                <div id="loginbox" style="width:800px">
-                    <form action="login_process.php">
-                        
-                        
+                <div id="loginbox" style="width:800px;">
+                    <form action="login_process.php" method="post">
+                        <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Login </h2> <br/> 
+                        <input type='text' id='username' name='username' class="input-text" placeholder="Username"/>
+                        <input type='password' id='password' name='password' class="input-text" placeholder="Password" />
+                        <input type='submit' value='Login'  onclick="login()" class="medium blue nice button radius" />
+                    </form>
+                </div>
+                <div id="authenbox" style="display: none; margin-top: 20px;">
+                    <form action="authen_process.php" method="post">
+                        <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Authentication </h2><br/>
+                        <input type='password' id='code' class="input-text" placeholder="Enter authen code here...."/>
+                        <input type='submit' value='Authen' onclick="authen()" class="medium blue nice button radius"/>
                     </form>
                 </div>
             </center>
