@@ -1,4 +1,4 @@
-<?php session_start() ; ?>
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -144,11 +144,11 @@ while ($row = mysql_fetch_array($result)) {
                     +"<tr><th width='160' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='150' border='1' /></th>"
                     + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
                     +"<p align='left'>Age : <?php echo $row['age']; ?></p>"
-                    +"<p align='left'>Piority :  <?php echo $row["priority"]; ?>%  </p>"
-					+"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
+                    +"<p align='left'>Piority :  <?php echo $row["ac_time"]; ?>%  </p>"
+                    +"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
                     +"<p align='right'><a href ='#' class = 'link2' onclick='profile_driver(<?php echo $row['user_id']; ?> )'>Read more.... </a></p></td></tr>"
                     +"<tr><th scope='row'>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"     			
-                			
+                        			
 <?php }mysql_close($cn); ?>
         ;
     }
@@ -171,7 +171,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+            }
         }
         xmlhttp.open("GET","profile.php?id="+str,true);
         xmlhttp.send();
@@ -182,17 +182,15 @@ while ($row = mysql_fetch_array($result)) {
 	
 <?php
 //$cn = @mysql_connect("localhost", "root", "adminadmin");
-
 //mysql_select_db("gps", $cn);
 //$sql = "SELECT * FROM gps.trip order by trip_id desc ";
 //$result = mysql_query($sql, $cn);
-
 //while ($row = mysql_fetch_array($result)) {
-    ?>
-            <!--"<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php //echo $row["trip_name"]; ?> </div></th></tr>"-->
-			<!--+ "<tr><th width='140' rowspan='2' scope='row'><img src='<?php //$carid = $row["car_id"]; ?>' width='100' height='100' border='1' /></th></tr></table>"-->
+?>
+        <!--"<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php //echo $row["trip_name"];   ?> </div></th></tr>"-->
+        <!--+ "<tr><th width='140' rowspan='2' scope='row'><img src='<?php //$carid = $row["car_id"];   ?>' width='100' height='100' border='1' /></th></tr></table>"-->
                 	
-<?php //} mysql_close($cn); ?>
+<?php //} mysql_close($cn);   ?>
         ;
     }
 
@@ -220,12 +218,12 @@ while ($row = mysql_fetch_array($result)) {
                     +"<table width='499' height='171' border='0'><tr>"
                     +"<td width='165'><img src='<?php echo $row['pic']; ?>' width='155' height='150' border='1' /></td>"
                     +"<td width='329'><p align='left'><b>Car ID :<?php echo $row['car_id']; ?> </b></p>"
-                    +"<p align='left'>Type : <?php echo $row['type']; ?></p><p align='left'>Priority : <?php echo $row["priority"]; ?>%  </p>"
-					+"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
+                    +"<p align='left'>Type : <?php echo $row['type']; ?></p><p align='left'>Priority : <?php echo $row["ac_time"]; ?>%  </p>"
+                    +"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
                     +"<p align='right'><a href ='#' class = 'link2' onclick=\"profile_car('<?php echo $row['car_id']; ?> ')\">Read more.... </a></p></td></tr>"
                     +"<tr><th>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"
-                			
-                			
+                        			
+                        			
 <?php } mysql_close($cn); ?>
         ;
     }
@@ -256,7 +254,7 @@ while ($row = mysql_fetch_array($result)) {
 
 
     function edit(str){
-		document.getElementById('map').style.display = 'none';
+        document.getElementById('map').style.display = 'none';
         document.getElementById('showdetail').style.display = 'none';
         document.getElementById("mail").style.display="inline";
         
@@ -280,7 +278,7 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editfile_finish(str){
-		document.getElementById('map').style.display = 'none';
+        document.getElementById('map').style.display = 'none';
         document.getElementById('showdetail').style.display = 'none';
         document.getElementById("mail").style.display="inline";
         var car_id = document.getElementById("car_id").value;
@@ -310,7 +308,7 @@ while ($row = mysql_fetch_array($result)) {
 		
 	
     function edit_driver(str){
-		document.getElementById('map').style.display = 'none';
+        document.getElementById('map').style.display = 'none';
         document.getElementById('showdetail').style.display = 'none';
         document.getElementById("mail").style.display="inline";
 		
@@ -334,7 +332,7 @@ while ($row = mysql_fetch_array($result)) {
     }
 	
     function editdriver_finish(str){
-		document.getElementById('map').style.display = 'none';
+        document.getElementById('map').style.display = 'none';
         document.getElementById('showdetail').style.display = 'none';
         document.getElementById("mail").style.display="inline";
         var name = document.getElementById("name").value;
@@ -644,174 +642,176 @@ while ($row = mysql_fetch_array($result)) {
 
                 </div>
                 <div class="style4" id="nevigator">
-					<?php if($_SESSION["rank"]=='admin'){ ?>
-                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>".$_SESSION["user"]."</a> | ".$_SESSION["rank"]."<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
+                    <?php if ($_SESSION["rank"] == 'admin') { ?>
+                        <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>" . $_SESSION["user"] . "</a> | " . $_SESSION["rank"] . "<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
 
-                    <div id="login">
-                        <span class="style1"> </span>
+                        <div id="login">
+                            <span class="style1"> </span>
+                        </div>
+
                     </div>
 
-                </div>
 
+                    <div id="cenbody" align="left">
 
-                <div id="cenbody" align="left">
+                        <div id="krop">
+                            <div id="tablena">
 
-                    <div id="krop">
-                        <div id="tablena">
+                                <table width="100%" height="504" border="0">
+                                    <tr>
+                                        <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
+                                    </tr>
+                                    <tr>
+                                        <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
+                                    </tr>
+                                    <tr>
+                                        <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
+                                    </tr>
 
-                            <table width="100%" height="504" border="0">
-                                <tr>
-                                    <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
-                                </tr>
-                                <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
-                                </tr>
-                                <tr>
-                                    <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
-                                </tr>
-                                <tr>
-                                    <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
-                                </tr>
-                                <tr>
-                                    <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
-                                </tr>
-                                <tr>
-                                    <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
-                                </tr>
+                                    <tr>
+                                        <th height="298" bgcolor="#CCCCCC"  scope="row"> <input type ="text" id="str" onKeyUp ="showHint(str)"/> <img src="icon_feature_sem-credits.png" onclick="searchja2()" width="20" height="20" /><br>
 
-                                <tr>
-                                    <th height="298" bgcolor="#CCCCCC"  scope="row"> <input type ="text" id="str" onKeyUp ="showHint(str)"/> <img src="icon_feature_sem-credits.png" onclick="searchja2()" width="20" height="20" /><br>
+                                                <table width="100%" border="0">
+                                                    <tr>
+                                                        <th height="30" colspan="2" bgcolor="#666666"  scope="row"><span class="style1" style="font-family:Geneva, Arial, Helvetica, sans-serif">TRIP</span></th>
+                                                    </tr>
 
-                                            <table width="100%" border="0">
-                                                <tr>
-                                                    <th height="30" colspan="2" bgcolor="#666666"  scope="row"><span class="style1" style="font-family:Geneva, Arial, Helvetica, sans-serif">TRIP</span></th>
-                                                </tr>
-
-                                                <?php
-                                                $cn = @mysql_connect("localhost", "root", "adminadmin");
-                                                if (!$cn) {
-                                                    echo "fail<br>";
-                                                    exit;
-                                                }
-                                                $i = 0;
-                                                mysql_select_db("gps", $cn);
-                                                $sql = "SELECT * FROM gps.trip order by trip_id desc";
-                                                $result = mysql_query($sql);
-                                                while ($row = mysql_fetch_array($result)) {
-                                                    if ($row["finish_time"] <> "" && $i < 5) {
-
-                                                        echo "<tr><th bgcolor='#FFFFFF' scope='row'><img src='truck3green.png' width='52' height='50'></th>" . "<td bgcolor='#FFFFFF'  ><span class='style3'><a href='#' onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
-                                                        echo "</tr>";
-                                                        $i = $i + 1;
-                                                    } else if ($row["finish_time"] == "" && $i < 5) {
-
-                                                        echo "<tr><th bgcolor='#FFFFFF' scope='row'><img src='truckorange.png' width='52' height='50'></th>" . "<td bgcolor='#FFFFFF' ><span class='style3'><a href='#'  onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
-                                                        echo "</tr>";
-                                                        $i = $i + 1;
+                                                    <?php
+                                                    $cn = @mysql_connect("localhost", "root", "adminadmin");
+                                                    if (!$cn) {
+                                                        echo "fail<br>";
+                                                        exit;
                                                     }
-                                                }
-                                                ?>
-                                                <tr>
-                                                    <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF"  scope="row"><div align="left"><img src="truck3green.png" width="30" height="30" /> Finish <img src="truckorange.png" width="30" height="30" />Not Finish</div></th>
-                                                </tr>
+                                                    $i = 0;
+                                                    mysql_select_db("gps", $cn);
+                                                    $sql = "SELECT * FROM gps.trip order by trip_id desc";
+                                                    $result = mysql_query($sql);
+                                                    while ($row = mysql_fetch_array($result)) {
+                                                        if ($row["finish_time"] <> "" && $i < 5) {
 
-                                                <tr>
-                                                    <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification2.png" width="30" height="30" />Finish Notification</div></th>
-                                                </tr>
-                                                <tr>
-                                                    <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification.png" width="30" height="30" />Not Finish Notification</div></th>
-                                                </tr>
-                                            </table>	</th>
-                                </tr>
-                            </table>
+                                                            echo "<tr><th bgcolor='#FFFFFF' scope='row'><img src='truck3green.png' width='52' height='50'></th>" . "<td bgcolor='#FFFFFF'  ><span class='style3'><a href='#' onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
+                                                            echo "</tr>";
+                                                            $i = $i + 1;
+                                                        } else if ($row["finish_time"] == "" && $i < 5) {
+
+                                                            echo "<tr><th bgcolor='#FFFFFF' scope='row'><img src='truckorange.png' width='52' height='50'></th>" . "<td bgcolor='#FFFFFF' ><span class='style3'><a href='#'  onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
+                                                            echo "</tr>";
+                                                            $i = $i + 1;
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <tr>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF"  scope="row"><div align="left"><img src="truck3green.png" width="30" height="30" /> Finish <img src="truckorange.png" width="30" height="30" />Not Finish</div></th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification2.png" width="30" height="30" />Finish Notification</div></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification.png" width="30" height="30" />Not Finish Notification</div></th>
+                                                    </tr>
+                                                </table>	</th>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <br />
+                            <!--
+                            <div class="style1" id="notification">
+                            
+                            <b class="style1">Notification</b>
+                            <hr />
+                            <?
+                            $cn = @mysql_connect("localhost", "root", "adminadmin");
+                            if (!$cn) {
+                                echo "fail<br>";
+                                exit;
+                            }
+                            mysql_select_db("gps", $cn);
+                            $sql = "select * from gps.log order by id desc";
+                            $result = mysql_query($sql, $cn);
+                            while ($row = mysql_fetch_array($result)) {
+                                echo "Trip " . $row["trip_id"] . "<br>Log :  " . $row["log"] . "<br>Time : " . $row["time"];
+                                echo "<hr>";
+                            }
+                            ?>
+                            </div>-->
+
+
+                            <!--<div id="trip"> <br />
+                                <b>TRIP</b> <br />
+                                <table width="200" cellpadding="4" cellspacing="1" style="border:1px solid #dcdc77;">
+                                  <tr>
+                                    <td bgcolor="#dcdc77"style="border-style:solid;border-width:4px;border-color:#dcdc77 gray gray #dcdc77;"><center>
+                                      <b>TRIP</b>
+                                    </center></td>
+                                  </tr>
+                            <?php
+                            $cn = @mysql_connect("localhost", "root", "adminadmin");
+                            if (!$cn) {
+                                echo "fail<br>";
+                                exit;
+                            }
+                            mysql_select_db("gps", $cn);
+                            $sql = "SELECT * FROM gps.trip order by trip_id desc";
+                            $result = mysql_query($sql, $cn);
+                            $color_green = '#99FF00';
+                            $color_red = '#FF0000';
+                            $color_yellow = '#FFD700';
+                            while ($row = mysql_fetch_array($result)) {
+                                if ($row["finish_time"] <> "") {
+
+                                    echo "<td bordercolor='#009900' bgcolor=$color_green ><span class='style3'><a href='#' onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
+                                    echo "</tr>";
+                                }
+                                if ($row["finish_time"] == "") {
+
+                                    echo "<td bordercolor='#009900' bgcolor=$color_yellow><span class='style3'><a href='#'  onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
+                                </table>
+                            </div>-->
+
 
                         </div>
-                        <br />
-                        <!--
-                        <div class="style1" id="notification">
-                        
-                        <b class="style1">Notification</b>
-                        <hr />
-                        <?
-                        $cn = @mysql_connect("localhost", "root", "adminadmin");
-                        if (!$cn) {
-                            echo "fail<br>";
-                            exit;
-                        }
-                        mysql_select_db("gps", $cn);
-                        $sql = "select * from gps.log order by id desc";
-                        $result = mysql_query($sql, $cn);
-                        while ($row = mysql_fetch_array($result)) {
-                            echo "Trip " . $row["trip_id"] . "<br>Log :  " . $row["log"] . "<br>Time : " . $row["time"];
-                            echo "<hr>";
-                        }
-                        ?>
-                        </div>-->
-
-
-                        <!--<div id="trip"> <br />
-                            <b>TRIP</b> <br />
-                            <table width="200" cellpadding="4" cellspacing="1" style="border:1px solid #dcdc77;">
-                              <tr>
-                                <td bgcolor="#dcdc77"style="border-style:solid;border-width:4px;border-color:#dcdc77 gray gray #dcdc77;"><center>
-                                  <b>TRIP</b>
-                                </center></td>
-                              </tr>
-                        <?php
-                        $cn = @mysql_connect("localhost", "root", "adminadmin");
-                        if (!$cn) {
-                            echo "fail<br>";
-                            exit;
-                        }
-                        mysql_select_db("gps", $cn);
-                        $sql = "SELECT * FROM gps.trip order by trip_id desc";
-                        $result = mysql_query($sql, $cn);
-                        $color_green = '#99FF00';
-                        $color_red = '#FF0000';
-                        $color_yellow = '#FFD700';
-                        while ($row = mysql_fetch_array($result)) {
-                            if ($row["finish_time"] <> "") {
-
-                                echo "<td bordercolor='#009900' bgcolor=$color_green ><span class='style3'><a href='#' onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
-                                echo "</tr>";
-                            }
-                            if ($row["finish_time"] == "") {
-
-                                echo "<td bordercolor='#009900' bgcolor=$color_yellow><span class='style3'><a href='#'  onmouseover='detail(" . $row["user_id"] . "," . $row["car_id"] . "," . $row["trip_id"] . ")' class='link2' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>" . $row["trip_name"] . "</a></span></td>";
-                                echo "</tr>";
-                            }
-                        }
-                        ?>
-                            </table>
-                        </div>-->
-
-
-                    </div>
 
 
 
-                    <div id="mailja">
-                        <div id="map"></div>
-                        <div id="mail"></div>
-                        <div id="showdetail">
+                        <div id="mailja">
+                            <div id="map"></div>
+                            <div id="mail"></div>
+                            <div id="showdetail">
+                            </div>
                         </div>
+
+
                     </div>
 
 
                 </div>
 
+                <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&language=th'></script>
 
-            </div>
+                <div id="foodter">
+                    <br /><br />	
 
-            <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&language=th'></script>
-
-            <div id="foodter">
-                <br /><br />	
-
-            </div>
-			<?php } else{
-				echo $_SESSION["rank"];
-			}?>
+                </div>
+                <?php
+            } else {
+                echo $_SESSION["rank"];
+            }
+            ?>
         </body>
 
 

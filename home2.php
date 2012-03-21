@@ -52,6 +52,7 @@ $_SESSION['user'] = "";
                 xmlhttp.open("GET","authen_process.php?code="+authen,true);
                 xmlhttp.send();
             }
+            
             function edit(str){
 	
                 if (window.XMLHttpRequest)
@@ -72,6 +73,7 @@ $_SESSION['user'] = "";
                 xmlhttp.open("GET","edit.php?id="+str,true);
                 xmlhttp.send();
             }
+            
             function editja(){
                 var username = document.getElementById("username").value;
                 var password= document.getElementById("password").value;
@@ -122,7 +124,7 @@ $_SESSION['user'] = "";
             <center>
                 <br />
                 <div id="loginbox" style="width:800px;">
-                    <form action="login_process.php" method="post">
+                    <form action="loginprocess2.php" method="post">
                         <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Login </h2> <br/> 
                         <input type='text' id='username' name='username' class="input-text" placeholder="Username"/>
                         <input type='password' id='password' name='password' class="input-text" placeholder="Password" />
