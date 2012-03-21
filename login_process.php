@@ -77,7 +77,7 @@ mysql_select_db("gps", $cn);
                 {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        document.getElementById("editbox").innerHTML=xmlhttp.responseText;
+                        //document.getElementById("editbox").innerHTML=xmlhttp.responseText;
                     }
                 }
                 xmlhttp.open("GET","edit.php?id="+str,true);
@@ -210,8 +210,8 @@ mysql_select_db("gps", $cn);
                             <a href='mail.php' class='link'><input type='submit' value='Go to Web' class="medium blue nice button radius" /></a>
                             <input type='submit' value='Edit' onclick='edit(<?php echo $row["id"] ?>)' class="medium blue nice button radius" />
                         </div>
-                        <div id="editbox" style="display: none;">
-                            
+                        <div id="editbox" style="display: none;width: auto;">
+                            asdfasdfasdfasdfasdfasdf
                         </div>
                     </center>
                 </div>

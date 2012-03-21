@@ -2,11 +2,8 @@
 $id = $_GET["id"];
 	
 
-		$cn = @mysql_connect("localhost","root","adminadmin");
-		if(!$cn){
-			echo "fail<br>";
-			exit;
-		}
+		$cn = @mysql_connect("localhost:3307","root","adminadmin");
+		
 		mysql_select_db("gps",$cn);
 		$sql = "SELECT * FROM gps.user where id =". $id;
 		$result = mysql_query($sql,$cn);
