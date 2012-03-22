@@ -641,9 +641,9 @@ while ($row = mysql_fetch_array($result)) {
                 <div id="header">
 
                 </div>
-                <div class="style4" id="nevigator">
+                <div class="style4" id="nevigator2">
                     <?php if ($_SESSION["rank"] == 'admin') { ?>
-                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><div><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>" . $_SESSION["user"] . "</a> | " . $_SESSION["rank"] . "<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?></div>
+                    <span class="style1" style="float: left;"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><div class="style1" style="float: right;"><?php echo "<span class='welcome'>Hi: <a href='login_process.php' class='link3'>" . $_SESSION["user"] . "</a> | rank: " . $_SESSION["rank"] . "  <a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?></div>
 
                         <div id="login">
                             <span class="style1"> </span>
@@ -674,7 +674,7 @@ while ($row = mysql_fetch_array($result)) {
                                         <th height="29" bgcolor="#ffffcc" scope="row"><div align="left" style="padding-left: 12px; margin-top: 5px;"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
                                     </tr>
                                     <tr>
-                                        <th height="26"  bgcolor="#fcfcbf" scope="row"><div align="left" style="padding-left: 12px;"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
+                                        <th height="26"  bgcolor="#fcfcbf" scope="row"><div align="left" style="padding-left: 12px;margin-top: 5px;"><span class="style10"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
                                     </tr>
 
                                     <tr>
@@ -682,7 +682,7 @@ while ($row = mysql_fetch_array($result)) {
 
                                                 <table width="100%" border="0">
                                                     <tr>
-                                                        <th height="30" colspan="2" bgcolor="#666666"  scope="row" style="padding-top: 5px; padding-bottom: 0;"><span class="style1" style="font-family:THSarabunNew,Tahoma, sans-serif; margin: 0; padding: 0">Recent trip</span></th>
+                                                        <th height="30" colspan="2" bgcolor="#666666"  scope="row" style="padding-top: 5px; padding-bottom: 0;"><span class="style3" style="font-family:THSarabunNew,Tahoma, sans-serif; margin: 0; padding: 0;font-size: 16px;">Recently trip</span></th>
                                                     </tr>
 
                                                     <?php
