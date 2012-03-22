@@ -54,7 +54,7 @@
             #foodter{width:1000px;margin-left:10px;margin-right:10px;float:left;}
             #showdetail{float:left;width:25%;height:auto;text-align:center;}
             #login{float:right;}
-            #krop{float:left;width:15%}
+            #krop{float:left;width:16%;}
             #tablena{width:100%;}
             hr{margin-top:0px;margin-bottom:20px;margin-left:10px;margin-right:10px;}
             #txtHint{margin-left:10px;background-color:#FFFFFF;width:155px; }
@@ -62,7 +62,7 @@
             #mail{float:left;width:70%;background-color:#F5F5F5;height:auto;margin-left:20px;}
             #mailja{
                 float:left;
-                width:83%;
+                width:82%;
                 background-color:#F5F5F5;
                 margin-left: 20px
             }
@@ -167,7 +167,7 @@
             .style8 {font-size: 12px}
             .style2 {	color: #FFFFFF;
                       font-weight: bold;
-                      font-size: 12px;
+                      font-size: 14px;
             }
             .style10 {
                 color: #333333;

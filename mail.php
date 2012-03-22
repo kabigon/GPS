@@ -1,21 +1,32 @@
-<?php session_start(); ?>
+<?php
+session_start();
+$cn = @mysql_connect("localhost", "root", "adminadmin");
+if (!$cn) {
+    echo "fail<br>";
+    exit;
+}
+mysql_select_db("gps", $cn);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
         <link rel="stylesheet" type="text/css" href="css/main_mail.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/main_mail.css" />
+        <script src="Scripts/jquery.min.js"></script>
+        <script src="Scripts/modernizr.foundation.js"></script>
+        <script src="Scripts/foundation.js"></script>
+        <script src="Scripts/app.js"></script>
+        <link rel="stylesheet" href="css/foundation.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="TH Sarabun New/fonts/thsarabunnew.css" />
         <title>GPS Tracking</title>
 
 
         <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAwCJvXcuK-yhXg5-rmW_WSRSjPdg9q1PN1dBkFmcXVY9-C4qgKhRtq_Zn49VlscMWhoBzIqVGJRbTVA" type="text/javascript"></script>
 
         <script type="text/javascript">
-
-
-            //<![CDATA[
-	
-	
             var icongreen = new GIcon(); 
             icongreen.image = 'http://pegasus.it.kmitl.ac.th/GPS/bird.jpg';
             icongreen.shadow = 'http://labs.google.com/ridefinder/images/mm_20_shadow.png';
@@ -23,9 +34,6 @@
             icongreen.shadowSize = new GSize(1, 1);
             icongreen.iconAnchor = new GPoint(12, 8);
             icongreen.infoWindowAnchor = new GPoint(5, 1);
-	
-	
-
             function showAddress(address) {
                 if (GBrowserIsCompatible()) {
                     map = new GMap2(document.getElementById("map"));
@@ -34,7 +42,6 @@
                     map.setCenter(new GLatLng(13.7312933, 100.7811), 14);
                     map.enableScrollWheelZoom();
                     geocoder = new GClientGeocoder();
-       
                 }
                 if (geocoder) {
                     geocoder.getLatLng(
@@ -125,30 +132,23 @@
                 document.getElementById('showdetail').style.display = 'none';
                 document.getElementById("mail").style.display="inline";
                 document.getElementById("mail").innerHTML=
-                    "<p align='left'> <span class='style14'>ข้อมูลคนขับรถ</span> </p>"
+                    "<p align='left' style=\"  margin-top: 10px;\"> <span style= \"color: #888; font-family: THSarabunNew,Tahoma, sans-serif;\" class='style14'>ข้อมูลคนขับรถ</span> </p>"
 		
                 <!--"<img src='bus-driver[1].gif' width='100px' height='100px' ><span class='style2'>Driver</span>" +"<center><table width='200' border='0' bordercolor='#000000' width='50px'>"-->
 <?php
-$cn = @mysql_connect("localhost", "root", "adminadmin");
-if (!$cn) {
-    echo "fail<br>";
-    exit;
-}
-mysql_select_db("gps", $cn);
 $sql = "SELECT * FROM gps.driver";
 $result = mysql_query($sql, $cn);
-
 while ($row = mysql_fetch_array($result)) {
-    ?>
-                    +"<table width='499' height='171' border='0'>"
-                    +"<tr><th width='160' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='150' border='1' /></th>"
-                    + "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<?php echo $row['name']; ?> </b></span></p>"
+?>
+                    +"<table width='499' height='171' border='0' style= \"color: #888; font-family: THSarabunNew,Tahoma, sans-serif; font-size:20px;\">"
+                    +"<tr><th width='160' scope='row'><img src='<?php echo $row['pic']; ?>' width='142' height='130' border='1' style=\"margin-top:15px; margin-bottom:10px;\"/></th>"
+                    + "<td width='329'><br/><br/><p align='left'><span class='style13'>Driver name : <?php echo $row['name']; ?> </span></p>"
                     +"<p align='left'>Age : <?php echo $row['age']; ?></p>"
                     +"<p align='left'>Piority :  <?php echo $row["ac_time"]; ?>%  </p>"
-                    +"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
+                    +"<p align='left'>Created By : <?php echo $row['created_by']; ?> </p>"
                     +"<p align='right'><a href ='#' class = 'link2' onclick='profile_driver(<?php echo $row['user_id']; ?> )'>Read more.... </a></p></td></tr>"
-                    +"<tr><th scope='row'>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"     			
-                        			
+                    +"</table>"     			
+                            			
 <?php }mysql_close($cn); ?>
         ;
     }
@@ -187,10 +187,10 @@ while ($row = mysql_fetch_array($result)) {
 //$result = mysql_query($sql, $cn);
 //while ($row = mysql_fetch_array($result)) {
 ?>
-        <!--"<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php //echo $row["trip_name"];   ?> </div></th></tr>"-->
-        <!--+ "<tr><th width='140' rowspan='2' scope='row'><img src='<?php //$carid = $row["car_id"];   ?>' width='100' height='100' border='1' /></th></tr></table>"-->
+        <!--"<table width='420' height='344' border='0'><tr><th height='61'  colspan='3' scope='row'><div align='left'>Trip Name :<?php //echo $row["trip_name"];    ?> </div></th></tr>"-->
+        <!--+ "<tr><th width='140' rowspan='2' scope='row'><img src='<?php //$carid = $row["car_id"];    ?>' width='100' height='100' border='1' /></th></tr></table>"-->
                 	
-<?php //} mysql_close($cn);   ?>
+<?php //} mysql_close($cn);    ?>
         ;
     }
 
@@ -222,8 +222,8 @@ while ($row = mysql_fetch_array($result)) {
                     +"<p align='left'><span class='style15'>Created_By : <?php echo $row['created_by']; ?>  </span></p>"
                     +"<p align='right'><a href ='#' class = 'link2' onclick=\"profile_car('<?php echo $row['car_id']; ?> ')\">Read more.... </a></p></td></tr>"
                     +"<tr><th>&nbsp;</th><td>&nbsp;</td></tr></table><hr>"
-                        			
-                        			
+                            			
+                            			
 <?php } mysql_close($cn); ?>
         ;
     }
@@ -643,7 +643,7 @@ while ($row = mysql_fetch_array($result)) {
                 </div>
                 <div class="style4" id="nevigator">
                     <?php if ($_SESSION["rank"] == 'admin') { ?>
-                        <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>" . $_SESSION["user"] . "</a> | " . $_SESSION["rank"] . "<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?>
+                    <span class="style1"><a href="mail.php" class="link" > HOME </a> | <a href="#" onclick="searchja()" class="link"> DETAIL </a> | <a href="#" onclick="driver()" class="link">DRIVER</a> | <a href="#" class="link" onclick="car()"> CAR </a>| <a href="#" class="link" onclick="trip_des()">TRIP</a>|<a href="javascript:void(0)"onclick="window.open('calendar/mailmail.php','link','height=380, width=500,scrollbars=no')"class="link" > History </a></span><div><?php echo "<span class='welcome'>Hi: <a href='home2.php' class='link3'>" . $_SESSION["user"] . "</a> | " . $_SESSION["rank"] . "<a href='logout.php'><img src='logout.png' width='40px' height='20px'></a></span>"; ?></div>
 
                         <div id="login">
                             <span class="style1"> </span>
@@ -657,32 +657,32 @@ while ($row = mysql_fetch_array($result)) {
                         <div id="krop">
                             <div id="tablena">
 
-                                <table width="100%" height="504" border="0">
+                                <table width="100%" height="490" border="1">
                                     <tr>
-                                        <th height="30" bgcolor="#666666" scope="row"><span class="style2"> เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
+                                        <th  height="30" bgcolor="#666666" scope="row" style="padding-left: 10px;padding-top: 10px;padding-bottom: 0"><span class="style2" > เข้าสู่หน้าติดตามระบบ &nbsp;&nbsp;</span></th>
                                     </tr>
                                     <tr>
-                                        <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
+                                        <th height="20" bgcolor="#fcfcbf" scope="row"><div align="left" style="padding-left: 12px; margin-top: 5px;"><span class="style10" ><a href="#" onclick="driver()" class="link2">ประวัติคนขับ</a></span></div></th>
                                     </tr>
                                     <tr>
-                                        <th height="26" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
+                                        <th height="26" bgcolor="#ffffcc" scope="row"><div align="left" style="padding-left: 12px; margin-top: 5px;"><span class="style10"><a href="#" onclick="car()" class="link2">ประวัติรถยนต์</a></span></div></th>
                                     </tr>
                                     <tr>
-                                        <th height="25" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
+                                        <th height="25" bgcolor="#fcfcbf" scope="row"><div align="left" style="padding-left: 12px; margin-top: 5px;"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_driver.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลคนขับ</a></span></div></th>
                                     </tr>
                                     <tr>
-                                        <th height="29" bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
+                                        <th height="29" bgcolor="#ffffcc" scope="row"><div align="left" style="padding-left: 12px; margin-top: 5px;"><span class="style10"><a href="javascript:void(0)"onclick="window.open('create_car.php','link','height=380, width=300,scrollbars=no')"  class="link2">เพิ่มข้อมูลรถ</a></span></div></th>
                                     </tr>
                                     <tr>
-                                        <th height="26"  bgcolor="#CCCCCC" scope="row"><div align="left" style="padding-left: 12px"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
+                                        <th height="26"  bgcolor="#fcfcbf" scope="row"><div align="left" style="padding-left: 12px;"><span class="style8"><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip2.php','link','height=650, width=1000,scrollbars=no')">เพิ่มการเดินทางใหม่</a></span><a href="javascript:void(0)" class="link2"onclick="window.open('create_trip.php','link','height=600, width=1000,scrollbars=no')"></a></span> </div></th>
                                     </tr>
 
                                     <tr>
-                                        <th height="298" bgcolor="#CCCCCC"  scope="row"> <input type ="text" id="str" onKeyUp ="showHint(str)"/> <img src="icon_feature_sem-credits.png" onclick="searchja2()" width="20" height="20" /><br>
+                                        <th height="298" bgcolor="#CCCCCC"  scope="row"> 
 
                                                 <table width="100%" border="0">
                                                     <tr>
-                                                        <th height="30" colspan="2" bgcolor="#666666"  scope="row"><span class="style1" style="font-family:Geneva, Arial, Helvetica, sans-serif">TRIP</span></th>
+                                                        <th height="30" colspan="2" bgcolor="#666666"  scope="row" style="padding-top: 5px; padding-bottom: 0;"><span class="style1" style="font-family:THSarabunNew,Tahoma, sans-serif; margin: 0; padding: 0">Recent trip</span></th>
                                                     </tr>
 
                                                     <?php
@@ -710,16 +710,18 @@ while ($row = mysql_fetch_array($result)) {
                                                     }
                                                     ?>
                                                     <tr>
-                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF"  scope="row"><div align="left"><img src="truck3green.png" width="30" height="30" /> Finish <img src="truckorange.png" width="30" height="30" />Not Finish</div></th>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF"  scope="row"><div align="left"><img src="truck3green.png" width="30" height="30" /> Finish trip<br/>
+                                                                <img src="truckorange.png" width="30" height="30" />Not Finish trip</div></th>
                                                     </tr>
 
                                                     <tr>
-                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification2.png" width="30" height="30" />Finish Notification</div></th>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification2.png" width="30" height="30" />Finish trip notification</div></th>
                                                     </tr>
                                                     <tr>
-                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification.png" width="30" height="30" />Not Finish Notification</div></th>
+                                                        <th bgcolor="#CCCCCC" colspan="2" bgcolor="#FFFFFF" scope="row"><div align="left"><img src="trucknotification.png" width="30" height="30" />Not Finish trip Notification</div></th>
                                                     </tr>
-                                                </table>	</th>
+                                                </table>	
+                                        </th>
                                     </tr>
                                 </table>
 
@@ -730,7 +732,7 @@ while ($row = mysql_fetch_array($result)) {
                             
                             <b class="style1">Notification</b>
                             <hr />
-                            <?
+                            <?php 
                             $cn = @mysql_connect("localhost", "root", "adminadmin");
                             if (!$cn) {
                                 echo "fail<br>";
