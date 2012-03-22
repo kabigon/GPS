@@ -25,41 +25,8 @@ mysql_select_db("gps", $cn);
         <link rel="stylesheet" href="css/app.css" />
         <link rel="stylesheet" href="TH Sarabun New/fonts/thsarabunnew.css" />
         <link rel="stylesheet" type="text/css" href="css/main_mail.css" />
-        <style type = "text/css">
-            #box-table-a
-            {
-                font-size: 12px;
-                margin: 45px;
-                width: 480px;
-                text-align: left;
-                border-collapse: collapse;
-            }
-            #box-table-a th
-            {
-                font-size: 13px;
-                font-weight: normal;
-                padding: 8px;
-                background: #b9c9fe;
-                border-top: 4px solid #aabcfe;
-                border-bottom: 1px solid #fff;
-                color: #039;
-            }
-            #box-table-a td
-            {
-                padding: 8px;
-                background: #e8edff; 
-                border-bottom: 1px solid #fff;
-                color: #669;
-                border-top: 1px solid transparent;
-            }
-            #box-table-a tr:hover td
-            {
-                background: #d0dafd;
-                color: #339;
-            }
-
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/table1.css" />
+        
 
         <script type="text/javascript">
             function edit(str){

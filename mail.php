@@ -21,6 +21,7 @@ mysql_select_db("gps", $cn);
         <link rel="stylesheet" href="css/foundation.css" />
         <link rel="stylesheet" href="css/app.css" />
         <link rel="stylesheet" href="TH Sarabun New/fonts/thsarabunnew.css" />
+        <link rel="stylesheet" type="text/css" href="css/table1.css" />
         <title>GPS Tracking</title>
 
 
