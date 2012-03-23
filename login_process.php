@@ -33,7 +33,7 @@ mysql_select_db("gps", $cn);
                 document.getElementById("loginbox").style.display="none";
                 document.getElementById("editbox").style.display="block";
             }
-            //aaa
+            
             function editja(){
                 var username = document.getElementById("username2").value;
                 var password= document.getElementById("password2").value;
