@@ -232,7 +232,7 @@ while ($row = mysql_fetch_array($result)) {
 	
 	
     function profile_car(str){
-	
+	//asdf
         //alert(str);
         if (window.XMLHttpRequest)
         {// code for IE7+, Firefox, Chrome, Opera, Safari
