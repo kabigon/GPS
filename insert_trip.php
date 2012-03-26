@@ -26,17 +26,20 @@ mysql_select_db("gps", $cn);
             var StayAlive = 3; // เวลาเป็นวินาทีที่ต้อง�?ารให้ WIndows เปิดออ�? 
 
             function KillMe(){ 
-///setTimeout("self.close()",StayAlive * 1000); 
-window.parent.opener.document.location.href='member.php';
-} 
+
+	setTimeout("self.close()",StayAlive * 1000); 
+	window.parent.opener.document.location.href='GPS2/index-member.php';
+	} 
+
 function KillMe2(){ 
 //setTimeout("self.close()",StayAlive * 1000); 
-window.parent.opener.document.location.href='mail.php';
+
+window.parent.opener.document.location.href='GPS2/index2.php';
 } 
         </SCRIPT> 
     </head>
 
-    <body onload="KillMe();self.focus()";>
+    <body>
 
         <?php
         $trip_name = $_GET["trip_name"];
@@ -91,7 +94,10 @@ window.parent.opener.document.location.href='mail.php';
         /* INSERT INTO gps.trip (start_long, start_lat, end_long,end_lat,user_id,car_id,trip_name,start_time,finish_time,date) VALUES ('13.5','100.5','13.6','100.6',1,'123','sriracha',"","",""); */
 
 
-        $sql = "INSERT INTO gps.trip VALUES (0,'$trip_name','$start_lat','$start_long','$end_lat','$end_long',NOW(),NOW(),'$car_id','$user_id','$location1','$location2','asdf','$username','$authen','$module_id')";
+
+        $sql = "INSERT INTO gps.trip VALUES (0,'$trip_name','$start_lat','$start_long','$end_lat','$end_long',NOW(),'','$car_id','$user_id','$location1','$location2','asdf','$username','$authen','$module_id')";
+
+
         if (!mysql_query($sql, $cn)) {
             die('Error: ' . mysql_error());
         }
@@ -109,14 +115,14 @@ window.parent.opener.document.location.href='mail.php';
             echo "Email Can Not Send.";
         }
 		if ($_SESSION["rank"]=="member") {
-	echo "<SCRIPT LANGUAGE='javascript'><!--n";
-	echo "KillMe();n";
-	echo "// --></SCRIPT>n";
+	echo "<SCRIPT LANGUAGE='javascript'>";
+	echo "KillMe();";
+	echo "</SCRIPT>";
 	}
 	else if($_SESSION["rank"]=="admin"){
-	echo "<SCRIPT LANGUAGE='javascript'><!--n";
-	echo "KillMe2();n";
-	echo "// --></SCRIPT>n";
+	echo "<SCRIPT LANGUAGE='javascript'>";
+	echo "KillMe2();";
+	echo "</SCRIPT>";
 	}
         ?>
 
