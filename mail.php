@@ -201,7 +201,7 @@ while ($row = mysql_fetch_array($result)) {
         document.getElementById("mail").style.display="inline";
         document.getElementById("mail").innerHTML=
             <!--document.getElementById("tttt").innerHTML=-->
-	
+
        
         "<p align='left'> <span class='style14'>ข้อมูลรถยนต์</span> </p>" 
 <?php
@@ -247,7 +247,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","profile_car.php?id="+str,true);
         xmlhttp.send();
@@ -272,7 +272,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","edit_car.php?id="+str,true);
         xmlhttp.send();
@@ -301,7 +301,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","chk_edit_car.php?car_id="+car_id+"&brand="+brand+"&color="+color+"&type="+type,true);
         xmlhttp.send();
@@ -326,7 +326,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","edit_driver.php?id="+str,true);
         xmlhttp.send();
@@ -354,7 +354,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("mail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","chk_edit_driver.php?name="+name+"&sex="+sex+"&age="+age+"&PID="+PID,true);
         xmlhttp.send();
@@ -376,7 +376,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("trip").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","show_search.php",true);
         xmlhttp.send();
@@ -397,7 +397,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("trip").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","show_search.php?name="+document.getElementById("search").value,true);
         xmlhttp.send();
@@ -421,7 +421,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("map").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","delete_driver.php?id="+str,true);
         xmlhttp.send();
@@ -442,7 +442,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("map").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","delete_car.php?id="+str,true);
         xmlhttp.send();
@@ -517,7 +517,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("showdetail").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","show_detail.php?user="+user+"&car="+car+"&id="+id,true);
         xmlhttp.send();
@@ -546,7 +546,7 @@ while ($row = mysql_fetch_array($result)) {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
                 document.getElementById("login").innerHTML=xmlhttp.responseText;
-               }
+               }
         }
         xmlhttp.open("GET","login_process.php?username="+username+"&password="+password,true);
         xmlhttp.send();
@@ -624,7 +624,7 @@ while ($row = mysql_fetch_array($result)) {
                         document.getElementById('mail').style.display = 'inline';
                         document.getElementById('map').style.display = 'none';
                         document.getElementById("mail").innerHTML=xmlhttp.responseText;
-                       }
+                       }
                 }
                 xmlhttp.open("GET","profile_car_and_driver.php?id="+str,true);
                 xmlhttp.send();
