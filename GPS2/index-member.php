@@ -469,6 +469,9 @@ while ($row = mysql_fetch_array($result)) {
 				  		if($row["finish_time"] =="0000-00-00 00:00:00"){
 							echo "<tr><th width='44' scope='row'><img src='orangecar.png' width='52' height='50'></th><td width='135'><li><a href='#' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>".$row["trip_name"]."</a></li></td></tr>";	
 						}
+                                                if($row["finish_time"] !="0000-00-00 00:00:00"){
+							echo "<tr><th width='44' scope='row'><img src='greencar.png' width='52' height='50'></th><td width='135'><li><a href='#' onclick='show_map_trip(" . $row["start_lat"] . "," . $row["start_long"] . "," . $row["end_lat"] . "," . $row["end_long"] . ")'>".$row["trip_name"]."</a></li></td></tr>";	
+						}
 						
 				 	$i=$i+1; 		
 				  }
@@ -492,7 +495,7 @@ while ($row = mysql_fetch_array($result)) {
                     <p class="postmeta">Create By <?php 
 					$cn = @mysql_connect("localhost", "root", "adminadmin");
 					mysql_select_db("gps", $cn);
-					$sql = "SELECT * FROM gps.driver order by user_id desc limit 1";
+					$sql = "SELECT * FROM gps.driver where created_by='".$_SESSION["user"]."' order by user_id desc limit 1";
 					$result = mysql_query($sql, $cn);
 					while ($row = mysql_fetch_array($result)) {
 						echo "<a href='#'>".$row["created_by"]."</a>";
@@ -506,7 +509,7 @@ while ($row = mysql_fetch_array($result)) {
 						<?php 
 						
 						
-						echo "<table width='500' height='159' border='0'><tr><th width='150'  rowspan='4' scope='row'><img src='../".$row["pic"]."' width='130' height='160'></th><td width='200' height='35'>Name : ".$row["name"]."</td></tr><tr><td height='31'>Age : ".$row["age"]."</td></tr><tr<td height='39'>Sex : ".$row["sex"]."</td></tr><tr><td height='42'>Accident Time : ".$row["ac_time"]."</td></tr></table>";
+						echo "<table width='500' height='159' border='0'><tr><th width='150'  rowspan='4' scope='row'><img src='../".$row["pic"]."' width='130' height='160'></th><td width='200' height='35'>Name : ".$row["name"]."</td></tr><tr><td height='31'>Age : ".$row["age"]."</td></tr><tr><td height='39'>Sex : ".$row["sex"]."</td></tr><tr><td height='42'>Accident Time : ".$row["ac_time"]."</td></tr></table>";
 						/*echo "<table width='209' height='200' border='0'>"."<tr><th width='80' scope='row'><img src='../". $row['pic']. "' width='142' height='150' border='1' /></th>". "<td width='329'><p align='left'><span class='style13'><b>Name Driver :<".$row['name']. "</b></span></p>"."<p align='left'>Age : ". $row['age']."</p>"."<p align='left'>Accident Time :  ". $row["ac_time"]."> Time  </p>"."<p align='left'><span class='style15'>Created_By : ". $row['created_by']."  </span></p>";*/
 						echo "<p class='readmore'><a href='#' onclick='profile_driver(".$row['user_id']." )'>read more</a></p>";
 						}?>
@@ -517,12 +520,12 @@ while ($row = mysql_fetch_array($result)) {
 					<p class="postmeta">Create By <?php 
 					$cn = @mysql_connect("localhost", "root", "adminadmin");
 					mysql_select_db("gps", $cn);
-					$sql = "SELECT * FROM gps.car order by car_id desc limit 1";
+					$sql = "SELECT * FROM gps.car where created_by='".$_SESSION["user"]."' order by car_id desc limit 1";
 					$result = mysql_query($sql, $cn);
 					while ($row = mysql_fetch_array($result)) {
 						echo "<a href='#'>".$row["created_by"]."</a></p>";
 						
-						echo "<table width='500' height='159' border='0'><tr><th width='150' rowspan='4' scope='row'><img src='../".$row["pic"]."' width='130' height='134'></th><td width='200' height='35'>Car Id : ".$row["car_id"]."</td></tr><tr><td height='31'>Brand : ".$row["brand"]."</td></tr><tr<td height='39'>Type : ".$row["type"]."</td></tr><tr><td height='42'>Accident Time : ".$row["ac_time"]."</td></tr></table>";
+						echo "<table width='500' height='159' border='0'><tr><th width='150' rowspan='4' scope='row'><img src='../".$row["pic"]."' width='130' height='134'></th><td width='200' height='35'>Car Id : ".$row["car_id"]."</td></tr><tr><td height='31'>Brand : ".$row["brand"]."</td></tr><tr><td height='39'>Type : ".$row["type"]."</td></tr><tr><td height='42'>Accident Time : ".$row["ac_time"]."</td></tr></table>";
                     echo "<p class='readmore'><a href ='#' class = 'link2' onclick=\"profile_car('". $row['car_id']."')\">read more </a></p>";
                 
                    }

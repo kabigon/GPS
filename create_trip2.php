@@ -361,7 +361,7 @@ mysql_select_db("gps", $cn);
                                     <select name="car_id" id ="car_id" onchange="piccar()" class="">
                                         <option value=""><-- Please Select Item --></option>
                                         <?php
-                                        $sql = "SELECT * FROM gps.car";
+                                        $sql = "SELECT * FROM gps.car where created_by='".$_SESSION["user"]."'";
                                         $result = mysql_query($sql, $cn);
                                         $i = 1;
                                         while ($row = mysql_fetch_array($result)) {
@@ -380,7 +380,7 @@ mysql_select_db("gps", $cn);
                                         <option value=""><-- Please Select Item --></option>
 
                                         <?php
-                                        $sql = "SELECT * FROM gps.driver";
+                                        $sql = "SELECT * FROM gps.driver where created_by='".$_SESSION["user"]."'";
                                         $result = mysql_query($sql, $cn);
                                         $i = 1;
                                         while ($row = mysql_fetch_array($result)) {

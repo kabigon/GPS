@@ -62,7 +62,17 @@ mysql_select_db("gps", $cn);
                 xmlhttp.send();
             }
 	
-	
+	function check(str){
+            if(str=="admin"){
+                
+                window.document.location.href="GPS2/index2.php";
+            }
+            else{
+                window.document.location.href="GPS2/index-member.php";
+            }
+            
+            
+        }
         </script>
         <title>Home</title>
     </head>
@@ -150,7 +160,7 @@ mysql_select_db("gps", $cn);
                                 </tr>
                             </tbody>
                         </table>
-                        <a href='mail.php' class='link'><input type='submit' value='Go to Web' class="medium blue nice button radius" /></a>
+                        <a href='#' class='link' onclick="check('<?php echo $row["rank"]; ?>')"><input type='submit' value='Go to Web' class="medium blue nice button radius" /></a>
                         <input type='submit' value='Edit' onclick="edit(<?php echo $row["id"] ?>)" class="medium blue nice button radius" />
                     </div>
                     <div id="editbox" style="display: none;">

@@ -12,24 +12,24 @@ body{background-image:url(Img/bg2.jpg);color:#FFFFFF}
 var StayAlive = 3; // เวลาเป็นวินาทีที่ต้องการให้ WIndows เปิดออก 
 function KillMe(){ 
 setTimeout("self.close()",StayAlive * 1000); 
-window.parent.opener.document.location.href='member.php';
+window.parent.opener.document.location.href='GPS2/index-member.php';
 } 
 
 function KillMe2(){ 
 setTimeout("self.close()",StayAlive * 1000); 
-window.parent.opener.document.location.href='mail.php';
+window.parent.opener.document.location.href='GPS2/index2.php';
 } 
 </SCRIPT> 
 </head>
 
-<body onload="KillMe();self.focus()";> 
+<body> 
 <?php
-$dest ="C:\AppServ\www\GPS/".$_FILES['userfile']['name'];
+$dest ="C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\GPS/".$_FILES['userfile']['name'];
 	if(move_uploaded_file($_FILES['userfile']['tmp_name'],$dest)){
 	//echo "finish move file <br>";
 	define("MAX_SHOW_SIZE",500000);
 	if($_FILES['userfile']['size']> MAX_SHOW_SIZE){
-		echo '<a href ="/GPS/' .$_FILES['userfile']['name'].'"> click see </a>';
+		echo '<a href ="C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\GPS/' .$_FILES['userfile']['name'].'"> click see </a>';
 	}
 	}
 	else{
@@ -60,14 +60,14 @@ if($result){
 	echo "<img src='loading.gif'/><br>";
 	//echo( "<a href=\"#\" onclick=\"window.close(); return false\">CLOSE WINDOW</a>"); ;
 	if ($_SESSION["rank"]=="member") {
-	echo "<SCRIPT LANGUAGE='javascript'><!--n";
-	echo "KillMe();n";
-	echo "// --></SCRIPT>n";
+	echo "<SCRIPT LANGUAGE='javascript'>";
+	echo "KillMe();";
+	echo "</SCRIPT>";
 	}
 	else if($_SESSION["rank"]=="admin"){
-	echo "<SCRIPT LANGUAGE='javascript'><!--n";
-	echo "KillMe2();n";
-	echo "// --></SCRIPT>n";
+	echo "<SCRIPT LANGUAGE='javascript'>";
+	echo "KillMe2();";
+	echo "</SCRIPT>";
 	}
 
 }

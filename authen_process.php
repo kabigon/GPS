@@ -18,7 +18,7 @@
 		}
 		mysql_select_db("gps",$cn);
 
-	$sql = "select * from gps.trip where authen_code =".$code;
+	$sql = "select * from gps.trip where authen_code ='".$code."'";
 	$result = mysql_query($sql,$cn);
 	while($row = mysql_fetch_array($result)){
 		$_SESSION["authen"]=$row["trip_id"];
@@ -32,7 +32,7 @@
 		while($row2 = mysql_fetch_array($result2)){
 			echo "Company : " .$row2["company_name"]."<br>";
 			$_SESSION["company"]=$row2["company_name"];
-			echo "<a href='authen.php' ><input type='submit' value='Go To Web'></a>";
+			echo "<a href='GPS2/authen.php' ><input type='submit' value='Go To Web'></a>";
 		}	
 
 ?>

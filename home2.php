@@ -46,7 +46,7 @@ $_SESSION['user'] = "";
                 {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        document.getElementById("loginbox").innerHTML=xmlhttp.responseText;
+                        document.getElementById("authenbox").innerHTML=xmlhttp.responseText;
                     }
                 }
                 xmlhttp.open("GET","authen_process.php?code="+authen,true);
@@ -132,11 +132,11 @@ $_SESSION['user'] = "";
                     </form>
                 </div>
                 <div id="authenbox" style="display: none; margin-top: 20px;">
-                    <form action="authen_process.php" method="post">
+                    <!--<form action="authen_process.php" method="post">-->
                         <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Authentication </h2><br/>
                         <input type='password' id='code' class="input-text" placeholder="Enter authen code here...."/>
-                        <input type='submit' value='Authen' onclick="authen()" class="medium blue nice button radius"/>
-                    </form>
+                        <input type='submit' value='Authen' onclick="authen_process()" class="medium blue nice button radius"/>
+                    <!--</form>-->
                 </div>
             </center>
         </div>
