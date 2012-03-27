@@ -50,7 +50,7 @@
 	footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
-	body {
+	body2 {
 		line-height: 1;
 	}
 	ol, ul {
@@ -71,7 +71,7 @@
 	
 	
 	
-	body { background: #fff; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; line-height: 18px; color: #555; position: relative; -webkit-font-smoothing: antialiased; }
+	body2 { background: #fff; font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; line-height: 18px; color: #555; position: relative; -webkit-font-smoothing: antialiased; }
 	
 
 

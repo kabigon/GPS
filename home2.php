@@ -9,15 +9,13 @@ $_SESSION['user'] = "";
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <link rel="stylesheet" type="text/css" href="css/main_mail.css" />
         <script src="Scripts/jquery.min.js"></script>
         <script src="Scripts/modernizr.foundation.js"></script>
         <script src="Scripts/foundation.js"></script>
-        <script src="Scripts/app.js"></script>
+        <link href="GPS2/style2.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="css/foundation.css" />
-        <link rel="stylesheet" href="css/app.css" />
         <link rel="stylesheet" href="TH Sarabun New/fonts/thsarabunnew.css" />
-        <link rel="stylesheet" type="text/css" href="css/main_mail.css" />
+
         <title>Home</title>
 
         <script type="text/javascript">
@@ -34,7 +32,7 @@ $_SESSION['user'] = "";
             function authen_process(){
 				
                 var authen = document.getElementById("code").value;
-				//alert(authen);
+                //alert(authen);
                 if (window.XMLHttpRequest)
                 {// code for IE7+, Firefox, Chrome, Opera, Safari
                     xmlhttp=new XMLHttpRequest();
@@ -108,39 +106,39 @@ $_SESSION['user'] = "";
     </head>
 
     <body>
-
-        <div id="center" style="margin-left: auto; margin-right: auto;" >
+        <div id="page">
             <div id="header">
-
+                <h1><a href="#"><span>Tracking</span> For Logistic</a></h1>
+                <p id="subtitle">Template designed by Alpha Studio</p>
             </div>
-            <div class="style4" id="nevigator">
-                <a href="#" onclick="login()" class="link"> Login 	</a>
-                |<a href="#" onclick="authen()" class="link" style="margin-right: 20px">  Authentication </a>
+            <div id="menu" style="margin-top:0">
+                <div class="style4" id="nevigator">
+                    <a href="#" onclick="login()" class="link"> Login 	</a>
+                    |<a href="#" onclick="authen()" class="link" style="margin-right: 20px">  Authentication </a>
 
-            </div>
-            <div class="style4" id="nevigator2" style="display: none">
-
-
-            </div>
-            <center>
-                <br />
-                <div id="loginbox" style="width:800px;">
-                    <form action="loginprocess2.php" method="post">
-                        <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Login </h2> <br/> 
-                        <input type='text' id='username' name='username' class="input-text" placeholder="Username"/>
-                        <input type='password' id='password' name='password' class="input-text" placeholder="Password" />
-                        <input type='submit' value='Login'  onclick="login()" class="medium blue nice button radius" />
-                    </form>
                 </div>
-                <div id="authenbox" style="display: none; margin-top: 20px;">
-                    <!--<form action="authen_process.php" method="post">-->
+            </div>
+            <div id="main">
+                <center>
+
+                    <div id="loginbox" style="width:800px;">
+                        <form action="loginprocess2.php" method="post">
+                            <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Login </h2> <br/> 
+                            <input type='text' id='username' name='username' class="input-text" placeholder="Username"/>
+                            <input type='password' id='password' name='password' class="input-text" placeholder="Password" />
+                            <input type='submit' value='Login'  onclick="login()" class="medium blue nice button radius" />
+                        </form>
+                    </div>
+                    <div id="authenbox" style="display: none; margin-top: 20px;">
+                        <!--<form action="authen_process.php" method="post">-->
                         <h2 style= "color: #888; font-family: THSarabunNew,Tahoma, sans-serif; "> Authentication </h2><br/>
-                        <input type='password' id='code' class="input-text" placeholder="Enter authen code here...."/>
+                        <input type='password' id='code' class="input-text" placeholder="Enter authen code here...."/><br/>
                         <input type='submit' value='Authen' onclick="authen_process()" class="medium blue nice button radius"/>
-                    <!--</form>-->
-                </div>
-            </center>
+                        <!--</form>-->
+                    </div>
+                </center>
+            </div>
         </div>
-        
+
     </body>
 </html>

@@ -17,6 +17,8 @@ if($row = mysql_fetch_array($result)){
         $_SESSION["rank"] = $row["rank"];
         $_SESSION["company"] = $row["company_name"];
         header("Location: login_process.php");
+    }else{
+        header("Location: home2.php");
     }
 }else{
     header("Location: home2.php");
