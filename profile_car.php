@@ -16,35 +16,47 @@ if (!$cn) {
 
     <body>
 
-        <?php
-        $id = $_GET["id"];
 
+<?php
+    $id = $_GET["id"];
+		
+		
+		echo "<center><h1>Car PROFILE</h1></center>";
+		$cn = @mysql_connect("localhost","root","adminadmin");
+		if(!$cn){
+			echo "fail<br>";
+			exit;
+		}
+		mysql_select_db("gps",$cn);
+		$sql = "SELECT * FROM gps.car where car_id ='". $id. "'";
+		$result = mysql_query($sql,$cn);
+		
+		while($row = mysql_fetch_array($result)){
+			//echo "<form action='edit_car.php'>";
+			echo "<center>";
+			echo "<img src='".$row["pic"]."' width='300px' height='200px'/><br><br>";
+			echo "<b>Car License : </b>" . $row["car_id"] . "<br>";
+			echo "<b>Brand : </b>" . $row["brand"] . "<br>";
+			echo "<b>Color : </b>" . $row["color"] . "<br>";
+			echo "<b>Type : </b>" . $row["type"] . "<br>";
+			echo "<b>Accident Time : </b>" . $row["ac_time"] . " Time<br>";
+			
+			echo "</center>";
+			
+			
+		}
+		//if($_SESSION["rank"]=="admin"){
+			echo "<center>";
+			echo "<input type='submit' value='Edit User' onclick=\"edit('$id')\" >";
+			echo "<input type ='submit' value='DELETE User' onclick='delete_car($id)'>";
+			echo "</center>";
+			//}
+		
+	?>
+    
 
-        echo "<center><h1>Car PROFILE</h1></center>";
-
-        mysql_select_db("gps", $cn);
-        $sql = "SELECT * FROM gps.car where car_id ='" . $id . "'";
-        $result = mysql_query($sql, $cn);
-
-        while ($row = mysql_fetch_array($result)) {
-            //echo "<form action='edit_car.php'>";
-            echo "<center>";
-            echo "<img src='" . $row["pic"] . "' width='300px' height='200px'/><br><br>";
-            echo "<b>Car License : </b>" . $row["car_id"] . "<br>";
-            echo "<b>Brand : </b>" . $row["brand"] . "<br>";
-            echo "<b>Color : </b>" . $row["color"] . "<br>";
-            echo "<b>Type : </b>" . $row["type"] . "<br>";
-            echo "<b>Priority : </b>" . $row["priority"] . "%<br>";
-
-            echo "</center>";
-        }
-        //if($_SESSION["rank"]=="admin"){
-        echo "<center>";
-        echo "<input type='submit' value='Edit User' onclick=\"edit('$id')\" >";
-        echo "<input type ='submit' value='DELETE User' onclick='delete_car($id)'>";
-        echo "</center>";
-        //}
-        ?>
+        
 
     </body>
+
 </html>

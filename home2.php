@@ -32,8 +32,9 @@ $_SESSION['user'] = "";
                 document.getElementById("authenbox").style.display = "block";
             }
             function authen_process(){
-	
+				
                 var authen = document.getElementById("code").value;
+				//alert(authen);
                 if (window.XMLHttpRequest)
                 {// code for IE7+, Firefox, Chrome, Opera, Safari
                     xmlhttp=new XMLHttpRequest();
